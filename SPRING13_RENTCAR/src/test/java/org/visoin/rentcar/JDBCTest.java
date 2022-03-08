@@ -10,8 +10,8 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.visoin.rentcar.dao.CarDAO;
-import org.visoin.rentcar.model.RentCar;
+import org.vision.rentcar.dao.CarDAO;
+import org.vision.rentcar.model.RentCar;
 
 //spring-test 사용
 

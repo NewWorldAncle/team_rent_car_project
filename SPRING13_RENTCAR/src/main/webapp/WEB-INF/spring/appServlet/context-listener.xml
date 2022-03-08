@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<bean id="VisitorDAO" class="org.visoin.rentcar.dao.VisitorDAO"></bean>
+<bean id="visitorDAO" class="org.vision.rentcar.dao.VisitorDAO"></bean>

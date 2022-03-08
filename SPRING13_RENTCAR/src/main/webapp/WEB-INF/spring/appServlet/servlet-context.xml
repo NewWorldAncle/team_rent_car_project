@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="org.visoin.rentcar" />
+	<context:component-scan base-package="org.vision.rentcar" />
 	
 	<beans:bean name="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<beans:property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
@@ -32,8 +32,8 @@
 	
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
-		<beans:property name="mapperLocations" 
-		value="classpath:org/visoin/rentcar/mapper/*.xml"></beans:property>
+		<beans:property name="mapperLocations"
+		value="classpath:org/vision/rentcar/mapper/*.xml"></beans:property>
 	</beans:bean>
 	
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">

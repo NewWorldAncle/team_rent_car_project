@@ -110,7 +110,7 @@
 		<div id="map"></div>
 	</div>
 	
-<!-- 
+
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appkey=	65a78f9a5e49db3ff20dc5396c98841b"></script>
 	<script>
@@ -130,6 +130,6 @@
 
 		marker.setMap(map);
 	</script>
--->
+
 </body>
 </html>
