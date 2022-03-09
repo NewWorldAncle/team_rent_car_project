@@ -2,6 +2,11 @@
 
 @import "reset.css";
 
+html, body{
+	width: 100%;
+	height: 100%;
+}
+
 a {
 	color: white;
 	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
@@ -56,15 +61,17 @@ a {
 /* 메인 컨텐츠 시작*/
 .main_wrap {
 	position: relative;
+	width:100%;
+	height:100%;
 }
 
 .main_back_container {
 	display: flex;
 	position: absolute;
 	z-index: -1;
-	height: 937px;
-	width: 100%;
-	overflow: hidden;
+	height:100%;
+	width:100%;
+	/*overflow: hidden;*/
 }
 
 .back_G {
@@ -81,7 +88,9 @@ a {
 
 #small_back {
 	display: flex;
-	flex-direction: row-reverse; height : 18%;
+	justify-content: space-between;
+	flex-direction: row-reverse; 
+	height : 18%;
 	background-color: white;
 	height: 18%;
 }
@@ -95,35 +104,41 @@ a {
 
 .back_Gimg {
 	width: 61%;
+	height: 100%;
 	background-color: black;
 }
-
-.txt_area {
+.main_slider {
+	display: block;
+	position: absolute;
+	width:61%;
+	height:100%;
+}
+.txt_alogan {
 	z-index: 1;
 	position: inherit;
 	display: inline-block;
-	margin: 200px 0px 322px 5%;
+	padding: 10% 0px 0px 5%;
 	width: 100% -150px;
 	color: white;
 }
 
-.txt_area :first-child {
+.txt_alogan :first-child {
 	font-size: 30px;
 	margin: 0px 0px 50px 0px;
 }
 
-.txt_area :nth-child(2) {
+.txt_alogan :nth-child(2) {
 	font-size: 75px;
 	margin: 0px 0px 10px 0px;
 }
 
-.txt_area :last-child {
+.txt_alogan :last-child {
 	font-size: 75px;
 	margin: 0px 0px 0px 150px;
 }
 
 .txt_scroll {
-	margin: 70px 0px 45px 5%;
+	margin: 9% 0px 0px 16%;
 	width: 100% -150px;
 	color: black;
 	font-size: 60px;
@@ -131,9 +146,6 @@ a {
 	word-spacing: 3px;
 }
 
-.main_slider {
-	position: absolute;
-}
 /* 메인 컨텐츠 끝*/
 
 /* 위치정보 시작*/
