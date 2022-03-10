@@ -1,12 +1,17 @@
 package org.vision.rentcar.model;
 
 public class RentVisitor {
+	public RentVisitor() {
+	}
 	private int visit_id;
     private String visit_ip;
     private int visit_time;
     private String visit_site;
     private String visit_agent;
 
+    
+
+	
 	public int getVisit_id() {
 		return visit_id;
 	}
@@ -37,12 +42,5 @@ public class RentVisitor {
 	public void setVisit_agent(String string) {
 		this.visit_agent = string;
 	}
-	@Override
-	public String toString() {
-		return "Rentvisitor [visit_id=" + visit_id + ", visit_ip=" + visit_ip + ", visit_time=" + visit_time
-				+ ", visit_site=" + visit_site + ", visit_agent=" + visit_agent + "]";
-	}
-	
-	
     
 }
