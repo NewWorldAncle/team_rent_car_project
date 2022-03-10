@@ -2,9 +2,6 @@ package org.vision.rentcar;
 
 import java.util.Locale;
 
-import javax.servlet.http.HttpSession;
-import javax.servlet.http.HttpSessionEvent;
-
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,13 +22,14 @@ public class HomeController {
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	@Autowired	
 	public SqlSession SqlSession; 
-
 	
 	@RequestMapping(value = {"/","home"}, method = RequestMethod.GET)
 	public String main(Locale locale, Model model) throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		BoardDAO dao = SqlSession.getMapper(BoardDAO.class);
-		model.addAttribute("serverTime", dao.list());
+		//BoardDAO dao = SqlSession.getMapper(BoardDAO.class);
+		
+		//model.addAttribute("serverTime", dao.list());
+		
 		return "home";
 	}
 	
@@ -46,7 +44,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = {"/boardmain"})
-	public String boardTest(Locale locale, Model model) {
+	public String boardTest(Locale locale, Model model) throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		BoardDAO dao = SqlSession.getMapper(BoardDAO.class);
 		
