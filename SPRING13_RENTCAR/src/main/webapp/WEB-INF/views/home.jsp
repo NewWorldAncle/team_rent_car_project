@@ -47,46 +47,63 @@
 	<div class="navi_container">
 		<nav class="navi">
 			<div class="navi_logo">
-				<h1>
-					<a href="home">V-RENTCAR</a>
-				</h1>
-			</div>
-			<%
-			if(session.getAttribute("login") != null) {	//로그인된 상태
-				String mid = (String)session.getAttribute("id"); //String mid생성
-			
-			if(mid.equals("admin"))	{	//관리자(admin) 로그인
+			<%	// 로그인 X
+				if(session.getAttribute("login") == null) {
 			%>
-				<div align="center" class="adminView">
-					관리자님 안녕하세요 :)&nbsp;&nbsp;&nbsp;
-					<a href="logout">로그아웃</a><hr>
-				</div>
-				<a href="memList">회원관리</a>
-				<a href="myList?id=${login.id}">마이페이지</a>&nbsp;&nbsp;&nbsp;
-				<a href="/rentcar/board/listPage">게시판</a>
+				<a href="/rentcar/">V-RENTCAR</a>
+			<% 
+				}
+				// 로그인 O
+				if(session.getAttribute("login") != null) {
+			%>
+				<a href="/rentcar/member/">V-RENTCAR</a>
+			<% 
+				}
+			%>
+			</div>
+			<ul class="naiv_menu">
 			<%
-				} else {	//다른 아이디인경우
+			//===============================================================================
+			//					로	그	인	된	상	태	-	관	리	자
+			//===============================================================================
+				if(session.getAttribute("login") != null) {
+					String mid = (String)session.getAttribute("id"); //String mid생성
+				
+				if(mid.equals("admin"))	{	//관리자(admin) 로그인
+			%>
+				<li><a href="/rentcar/car/carList">RentCarList</a></li>
+				<li><a href="memList">Member</a></li>
+				<li><a href="/rentcar/board/listPage">QnA</a></li>
+				<li><a href="myList?id=${login.id}">MyPage</a></li>
+				<li>관리자님 접속</li>
+				<li><a href="logout">Logout</a></li>
+				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
+			<%
+				} else {
+			//===============================================================================
+			//						로	그	인	된	상	태	-	유	저
+			//===============================================================================
 			%>		
-				<div align="center" class="userView">
-					<%=mid %> 회원님 안녕하세요 :)&nbsp;&nbsp;&nbsp;
-					<a href="logout">로그아웃</a>
-				</div>
-				<a href="myList?id=${login.id}">마이페이지</a>&nbsp;&nbsp;&nbsp;
-				<a href="/rentcar/board/listPage">게시판</a>
+				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
+				<li><a href="/rentcar/board/listPage">QnA</a></li>
+				<li><a href="myList?id=${login.id}">MyPage</a><li>
+				<li><%=mid %> 회원님  접속</li>
+				<li><a href="logout">Logout</a></li>
+				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
 			<%	
 				}
-				} else { //로그인 안된 상태
+				} else {
+			//===============================================================================
+			//						로	그	인	안	된	상	태
+			//===============================================================================
 			%>		
-				<a href="member/loginForm">로그인</a>&nbsp;&nbsp;&nbsp;
-				<a href="/rentcar/board/listPage">게시판</a>
+				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
+				<li><a href="/rentcar/board/listPage">QnA</a></li>
+				<li><a href="member/loginForm">Login</a></li>
+				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
 			<%
 				}
 			%>
-			<ul class="naiv_menu">
-				<li><a href="carmain">RentCar</a></li>
-				<li><a href="boardmain">QnA</a></li>
-				<li><a href="#">Login</a></li>
-				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
 			</ul>
 		</nav>
 	</div>
