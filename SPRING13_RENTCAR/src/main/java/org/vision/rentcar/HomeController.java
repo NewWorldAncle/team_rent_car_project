@@ -24,11 +24,11 @@ public class HomeController {
 	public SqlSession SqlSession; 
 	
 	@RequestMapping(value = {"/","home"}, method = RequestMethod.GET)
-	public String main(Locale locale, Model model) {
+	public String main(Locale locale, Model model) throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
-		BoardDAO dao = SqlSession.getMapper(BoardDAO.class);
+		//BoardDAO dao = SqlSession.getMapper(BoardDAO.class);
 		
-		model.addAttribute("serverTime", dao.list());
+		//model.addAttribute("serverTime", dao.list());
 		
 		return "home";
 	}
@@ -44,7 +44,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = {"/boardmain"})
-	public String boardTest(Locale locale, Model model) {
+	public String boardTest(Locale locale, Model model) throws Exception {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		BoardDAO dao = SqlSession.getMapper(BoardDAO.class);
 		

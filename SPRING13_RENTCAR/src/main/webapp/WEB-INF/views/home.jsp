@@ -51,6 +51,37 @@
 					<a href="home">V-RENTCAR</a>
 				</h1>
 			</div>
+			<%
+			if(session.getAttribute("login") != null) {	//로그인된 상태
+				String mid = (String)session.getAttribute("id"); //String mid생성
+			
+			if(mid.equals("admin"))	{	//관리자(admin) 로그인
+			%>
+				<div align="center" class="adminView">
+					관리자님 안녕하세요 :)&nbsp;&nbsp;&nbsp;
+					<a href="logout">로그아웃</a><hr>
+				</div>
+				<a href="memList">회원관리</a>
+				<a href="myList?id=${login.id}">마이페이지</a>&nbsp;&nbsp;&nbsp;
+				<a href="/rentcar/board/listPage">게시판</a>
+			<%
+				} else {	//다른 아이디인경우
+			%>		
+				<div align="center" class="userView">
+					<%=mid %> 회원님 안녕하세요 :)&nbsp;&nbsp;&nbsp;
+					<a href="logout">로그아웃</a>
+				</div>
+				<a href="myList?id=${login.id}">마이페이지</a>&nbsp;&nbsp;&nbsp;
+				<a href="/rentcar/board/listPage">게시판</a>
+			<%	
+				}
+				} else { //로그인 안된 상태
+			%>		
+				<a href="member/loginForm">로그인</a>&nbsp;&nbsp;&nbsp;
+				<a href="/rentcar/board/listPage">게시판</a>
+			<%
+				}
+			%>
 			<ul class="naiv_menu">
 				<li><a href="carmain">RentCar</a></li>
 				<li><a href="boardmain">QnA</a></li>
