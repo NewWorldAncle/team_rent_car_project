@@ -1,0 +1,195 @@
+@charset "UTF-8";
+
+@import "reset.css";
+
+a {
+	color: white;
+	text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
+/* 네비 메뉴 시작*/
+.navi_container {
+	position: absolute;
+	left: 0;
+	top: 0;
+	width: 100%;
+	box-sizing: border-box;
+	z-index: 10;
+}
+
+.navi {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 100px;
+	padding-left: 5%;
+}
+
+.navi_logo {
+	display: flex;
+	align-items: center;
+	font-size: 26px;
+}
+
+.naiv_menu {
+	display: flex;
+}
+
+.naiv_menu li {
+	display: block;
+	font-size: 20px;
+	padding: 0px 40px;
+	line-height: 100px;
+}
+
+.naiv_menu li:last-child {
+	font-size: 24px;
+	background-color: black;
+	margin: 0px 0px 0px 40px;
+}
+
+.naiv_menu li:last-child i {
+	color: white;
+}
+/* 네비 메뉴 끝*/
+
+/* 메인 컨텐츠 시작*/
+.main_wrap {
+	position: relative;
+}
+
+.main_back_container {
+	display: flex;
+	position: absolute;
+	z-index: -1;
+	height: 937px;
+	width: 100%;
+	overflow: hidden;
+}
+
+.back_G {
+	display: flex;
+	flex-direction: column;
+	width: 39%;
+	height: 100%;
+}
+
+#big_back {
+	height: 82%;
+	background-color: black;
+}
+
+#small_back {
+	display: flex;
+	flex-direction: row-reverse; height : 18%;
+	background-color: white;
+	height: 18%;
+}
+
+#top_triangle {
+	width: 0;
+	height: 0;
+	border-top: 170px solid black;
+	border-left: 120px solid transparent;
+}
+
+.back_Gimg {
+	width: 61%;
+	background-color: black;
+}
+
+.txt_area {
+	z-index: 1;
+	position: inherit;
+	display: inline-block;
+	margin: 200px 0px 322px 5%;
+	width: 100% -150px;
+	color: white;
+}
+
+.txt_area :first-child {
+	font-size: 30px;
+	margin: 0px 0px 50px 0px;
+}
+
+.txt_area :nth-child(2) {
+	font-size: 75px;
+	margin: 0px 0px 10px 0px;
+}
+
+.txt_area :last-child {
+	font-size: 75px;
+	margin: 0px 0px 0px 150px;
+}
+
+.txt_scroll {
+	margin: 70px 0px 45px 5%;
+	width: 100% -150px;
+	color: black;
+	font-size: 60px;
+	letter-spacing: 6px;
+	word-spacing: 3px;
+}
+
+.main_slider {
+	position: absolute;
+}
+/* 메인 컨텐츠 끝*/
+
+/* 위치정보 시작*/
+.location_info {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.loaction_txtmain {
+	text-align: center;
+	background-color: black;
+	width: 100%;
+	color: white;
+}
+
+.loaction_txtmain p:first-child {
+	font-size: 50px;
+	font-weight: bold;
+	padding: 50px 0px 5px 0px;
+	letter-spacing: 6px;
+}
+
+.loaction_txtmain p:last-child {
+	font-size: 15px;
+	padding: 0px 0px 40px 0px;
+	letter-spacing: 10px;
+}
+
+.loaction_txtarea {
+	display: flex;
+	justify-content: space-between;
+	width: 75%;
+	padding: 50px 0px;
+}
+
+.loaction_txtarea_card{
+	display: flex;
+}
+.loaction_txtarea_card i{
+	font-size: 35px;
+	padding: 0px 17px 0px 0px;
+}
+
+.card_txt p:first-child{
+	font-size: 20px;
+	font-weight: bold;
+	margin: 0px 0px 15px 0px;
+}
+.card_txt p:last-child{
+	line-height: 26px;
+}
+#map {
+	width: 70%;
+	height: 500px;
+	background-color: black;
+	margin: 0px 0px 200px 0px;
+}
+/* 위치정보 끝*/
