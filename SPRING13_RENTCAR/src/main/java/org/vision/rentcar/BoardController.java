@@ -13,12 +13,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.vision.rentcar.dao.BoardDAO;
-import org.vision.rentcar.model.Criteria;
 import org.vision.rentcar.model.PageMaker;
 import org.vision.rentcar.model.RentBoard;
+import org.vision.rentcar.model.SearchCriteria;
 import org.vision.rentcar.serviceBoard.BoardModifyService;
 import org.vision.rentcar.serviceBoard.BoardModifyViewService;
 import org.vision.rentcar.serviceBoard.BoardPageService;
@@ -72,16 +73,18 @@ public class BoardController {
 	}
 
 	@RequestMapping(value="/listPage",method=RequestMethod.GET)
-	public void listPage(Criteria cri, Model model) throws Exception {
-		logger.info("boardListPage 실행.");
+	public String listPage(@ModelAttribute("scri") SearchCriteria scri, Model model) throws Exception {
+		logger.info("listPage");
 		service2 = new BoardPageService();
-		List<RentBoard> list = service2.listPage(cri);
-		model.addAttribute("list", list);
+		List<RentBoard> list = service2.listPage(scri);
+		model.addAttribute("listPage", service2.listPage(scri));
 		
 		PageMaker pageMaker = new PageMaker();
-		pageMaker.setCri(cri);
-		pageMaker.setTotalCount(service2.listCount());
+		pageMaker.setCri(scri);
+		pageMaker.setTotalCount(service2.listCount(scri));
 		model.addAttribute("pageMaker", pageMaker);
+		
+		return "board/listPage";
 	}
 	
 	@RequestMapping("/view")
