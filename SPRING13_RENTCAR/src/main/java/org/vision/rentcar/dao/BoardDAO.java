@@ -2,14 +2,13 @@ package org.vision.rentcar.dao;
 
 import java.util.List;
 
-import org.vision.rentcar.model.Criteria;
 import org.vision.rentcar.model.RentBoard;
+import org.vision.rentcar.model.SearchCriteria;
 
 public interface BoardDAO {
 	public RentBoard boardView(final int num) throws Exception;	//게시글 보기
 	//게시글 작성(글번호 자동기입,작성자, 작성자이메일, 제목, 비밀번호, 내용)
 	public void write(final String writer,final String email,final String subject,final String password,final String content) throws Exception;
-	public List<RentBoard> list() throws Exception;	//게시판 불러오기
 	//게시글 수정(글번호, 작성자, 작성자메일, 제목, 비밀번호, 내용)
 	public void modify(final int num,final String email,final String subject,final String password,final String content) throws Exception;
 	public void delete(final int num) throws Exception;	//게시글 삭제
@@ -21,8 +20,8 @@ public interface BoardDAO {
 	/*
 	 * 오라클DB 페이징 처리
 	 */
-	public List<RentBoard> listPage(Criteria cri) throws Exception;
-	public int listCount() throws Exception;
+	public List<RentBoard> listPage(SearchCriteria scri) throws Exception;
+	public int listCount(SearchCriteria scri) throws Exception;
 
 	/*
 	 * 테스트용
