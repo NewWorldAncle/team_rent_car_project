@@ -5,8 +5,8 @@ import java.util.List;
 import javax.inject.Inject;
 
 import org.apache.ibatis.session.SqlSession;
-import org.vision.rentcar.model.Criteria;
 import org.vision.rentcar.model.RentBoard;
+import org.vision.rentcar.model.SearchCriteria;
 import org.vision.rentcar.serviceMember.Constant;
 
 public class BoardDAOimpl implements BoardDAO {
@@ -14,19 +14,15 @@ public class BoardDAOimpl implements BoardDAO {
 	private SqlSession sqlSession = Constant.sqlSession;
 	private static String namespace = "org.vision.rentcar.dao.BoardDAO";
 
+	
 	@Override
-	public List<RentBoard> list() throws Exception {
-		return sqlSession.selectList(namespace+".list");
+	public List<RentBoard> listPage(SearchCriteria scri) throws Exception {
+		return sqlSession.selectList(namespace+".listPage", scri);
 	}
 	
 	@Override
-	public List<RentBoard> listPage(Criteria cri) throws Exception {
-		return sqlSession.selectList(namespace+".listPage",cri);
-	}
-	
-	@Override
-	public int listCount() throws Exception {
-		return sqlSession.selectOne(namespace+".listCount");
+	public int listCount(SearchCriteria scri) throws Exception {
+		return sqlSession.selectOne(namespace+".listCount", scri);
 	}
 	
 //==========================================================================
