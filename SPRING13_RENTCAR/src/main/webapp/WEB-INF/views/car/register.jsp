@@ -44,7 +44,10 @@
 			</tr>
 			<tr>
 				<td>차량이미지</td>
-				<td><input type="file" name="img"></td>
+				<td>
+					<input type="text" name="imgName" id="imgName">
+					<input type="file" name="img" onchange="javascript:document.getElementById('imgName').value=this.value">
+				</td>
 			</tr>
 			<tr>
 				<td>기타상세정보</td>
