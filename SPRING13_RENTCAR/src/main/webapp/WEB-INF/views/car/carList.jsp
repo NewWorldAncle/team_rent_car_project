@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib  prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 
@@ -66,7 +67,7 @@
 				<td>${dto.price}</td>
 				<td>${dto.usepeople}</td>
 				<td>${dto.company}</td>
-				<td><img src="resources/img/${dto.img}" alt="car"></td>
+				<td><img src="<spring:url value='/resources/img/${dto.img}'/>" alt="car" width="200" height="150"></td>
 				<td>${dto.info}</td>
 				<td>
 					<button onclick="location.href='delete?no=${dto.no}'">삭제</button>
