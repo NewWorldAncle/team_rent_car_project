@@ -100,11 +100,11 @@
 			<div class="back_Gimg">
 				<ul>
 					<li><img class="main_slider" alt="슬라이더 이미지1"
-						src="resources/img/mainslider1.jpg"></li>
+						src="${path}/resources/img/mainslider1.jpg"></li>
 					<li><img class="main_slider" alt="슬라이더 이미지2"
-						src="resources/img/mainslider2.jpg"></li>
+						src="${path}/resources/img/mainslider2.jpg"></li>
 					<li><img class="main_slider" alt="슬라이더 이미지3"
-						src="resources/img/mainslider3.jpg"></li>
+						src="${path}/resources/img/mainslider3.jpg"></li>
 				</ul>
 			</div>
 		</div>

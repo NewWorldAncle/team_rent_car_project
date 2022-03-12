@@ -48,7 +48,7 @@ public class HomeController {
 		logger.info("Welcome home! The client locale is {}.", locale);
 		BoardDAO dao = SqlSession.getMapper(BoardDAO.class);
 		
-		model.addAttribute("serverTime", dao.list());
+//		model.addAttribute("serverTime", dao.list());
 		
 		return "boardmain";
 	}
