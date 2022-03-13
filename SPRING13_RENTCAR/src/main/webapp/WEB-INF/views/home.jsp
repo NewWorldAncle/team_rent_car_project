@@ -56,7 +56,7 @@
 				<li><a href="memList">Member</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
 				<li><a href="myList?id=${login.id}">MyPage</a></li>
-				<li>관리자님 접속</li>
+				<li id="a">관리자님 접속</li>
 				<li><a href="logout">Logout</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
 			<%
@@ -68,7 +68,7 @@
 				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
 				<li><a href="myList?id=${login.id}">MyPage</a><li>
-				<li><%=mid %> 회원님  접속</li>
+				<li id="a"><%=mid %> 회원님  접속</li>
 				<li><a href="logout">Logout</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
 			<%	
@@ -89,12 +89,13 @@
 		</nav>
 	</div>
 	
-	<div class="main_wrap">
+<div class="main_wrap">
 		<div class="main_back_container">
 			<div class="back_G">
 				<div id="big_back"></div>
 				<div id="small_back">
-					<div id="top_triangle"></div>				
+					<div id="top_triangle"></div>
+					<div class="txt_scroll">Scroll Down</div>
 				</div>
 			</div>
 			<div class="back_Gimg">
@@ -109,13 +110,13 @@
 			</div>
 		</div>
 
-		<div class="txt_area">
+		<div class="txt_alogan">
 			<p>sub slogan position</p>
 			<h2>first main slogan position</h2>
 			<h2>second main slogan position</h2>
 		</div>
-		<div class="txt_scroll">Scroll Down</div>
 	</div>
+
 	
 	
 	<div class="location_info">

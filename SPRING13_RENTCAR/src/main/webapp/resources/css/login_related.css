@@ -1,0 +1,164 @@
+@charset "UTF-8";
+
+@import "common.css";
+
+
+.navi_container {
+	display: block;
+	position: relative;
+}
+input{
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid rgb(182, 182, 182);
+}
+
+h3{
+	font-size: 35px;
+	margin-bottom: 80px;
+}
+
+.navi{
+	background-color: black;
+}
+
+
+/*=========================회원가입부분*/
+.joinSection {
+	background: #E1E1E1;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 100%;
+}
+
+.joinWrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #232F3E;
+	background: white;
+	width: 800px;
+	height: 1000px;
+	border-radius: 20px;
+}
+
+.joinWrap th{
+	font-size: 17px;
+	text-align: left;
+	padding: 0px 30px 0px 0px;
+}
+
+
+.id_wrap input,
+.pass_wrap input,
+.pass_chk_wrap input,
+.eamil_wrap input,
+.tel_wrap input{
+	width: 300px;
+	height: 30px;
+	margin-bottom: 30px;
+}
+
+.age_wrap input {
+	width:15px;
+	height: 15px;
+	margin-bottom: 30px;
+}
+
+.job_wrap select{
+	width:150px;
+	height: 30px;
+	margin-bottom: 30px;
+}
+.hobby_wrap input {
+	width:15px;
+	height: 15px;
+	margin-bottom: 10px;
+}
+.menu_wrap>td {
+	text-align: center;
+}
+.menu_wrap input{
+	font-size: 20px;
+	width:100px;
+	height: 30px;
+	border: none;
+	border-radius: 15px;
+	margin-top: 60px;
+	color: white;
+}
+
+.ok_button{
+	background: black;
+
+}
+.ok_button:hover {
+	background: #2F2F2F;
+	box-shadow: 0px 0px 30px 5px #b3b3b3;
+}
+
+
+.no_button{
+	background: #AAAAAA;	
+}
+.no_button:hover {
+	background: #DF5A4F;
+	box-shadow: 0px 0px 30px 5px #b3b3b3;
+}
+
+/*=================================로그인부분*/
+.login_wrap{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #232F3E;
+	background: white;
+	width: 600px;
+	height: 800px;
+	border-radius: 20px;
+}
+
+h4{
+	font-size:25px;
+	margin:0px 0px 40px 0px;
+}
+.loginId input,
+.loginPw input{
+	width: 300px;
+	height: 30px;
+	font-size:18px;
+	margin-bottom: 30px;
+}
+
+.loginEtc,
+.find_account {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+
+#submitForm{
+	text-shadow: none;
+	font-size: 16px;
+	width:305px;
+	height: 50px;
+	background-color:black;
+	border: none;
+	border-radius: 10px;
+	margin: 20px 0px 45px 0px;
+	color: white;
+}
+.find_account a{
+	text-shadow: none;
+	color: black;
+	font-size: 15px;
+	padding: 3px 3px;
+	margin: 0px 10px;
+}
+
