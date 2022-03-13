@@ -17,8 +17,7 @@ import org.vision.rentcar.model.RentVisitor;
 
 
 public class VisitorCounter implements HttpSessionListener{
-//	@Autowired
-//	public SqlSession SqlSession;
+
 	
 	@Override
     public void sessionCreated(HttpSessionEvent source){
@@ -49,6 +48,6 @@ public class VisitorCounter implements HttpSessionListener{
     }
     @Override
     public void sessionDestroyed(HttpSessionEvent arg0){
-        //TODO Auto-generated method stub
+       System.out.println("session 삭제되었습니다");
     }
 }
