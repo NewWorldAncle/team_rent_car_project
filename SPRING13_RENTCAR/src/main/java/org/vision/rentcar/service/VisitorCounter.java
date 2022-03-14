@@ -41,6 +41,7 @@ public class VisitorCounter implements HttpSessionListener {
 				req.getRemoteAddr() + "######" + req.getHeader("User-Agent") + "######" + req.getHeader("referer"));
 
 		visitorDAO.insertVisitor(vo);
+		//just for push
 
 	}
 
