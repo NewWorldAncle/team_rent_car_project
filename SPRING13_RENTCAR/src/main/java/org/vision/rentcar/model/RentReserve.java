@@ -11,6 +11,7 @@ public class RentReserve {
 	private int navigation; //네비게이션적용여부 1.적용 2.미적용
 	private int babyseat; //유아용시트적용여부 1.적용 2.미적용
 	private String memid; //예약자(고객) 아이디
+	
 	public int getRegno() {
 		return regno;
 	}
@@ -71,12 +72,12 @@ public class RentReserve {
 	public void setMemid(String memid) {
 		this.memid = memid;
 	}
+	
 	@Override
 	public String toString() {
-		return "예약정보 [regno=" + regno + ", no=" + no + ", qty=" + qty + ", dday=" + dday + ", rday=" + rday
-				+ ", insurance=" + insurance + ", wifi=" + wifi + ", navigation=" + navigation + ", babyseat="
-				+ babyseat + ", memid=" + memid + "]";
+		return "RentReserve [regno=" + regno + ", no=" + no  + ", qty=" + qty + ", dday=" + dday
+				+ ", rday=" + rday + ", insurance=" + insurance + ", wifi=" + wifi + ", navigation=" + navigation
+				+ ", babyseat=" + babyseat + ", memid=" + memid + "]";
 	}
-	
 	
 }

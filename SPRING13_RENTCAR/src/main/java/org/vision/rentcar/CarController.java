@@ -59,7 +59,7 @@ public class CarController {
 	public String carList(Model model) {	//전체 명단
 		CarDAO dao = sqlSession.getMapper(CarDAO.class);
 		model.addAttribute("carList", dao.list());
-		logger.info("catalog 실행.");
+		logger.info("carList 실행.");
 		return "/car/carList";	//catalog.jsp 실행
 	}
 	
@@ -103,4 +103,5 @@ public class CarController {
 		logger.info("registerOk 실행.");
 		return "redirect:carList";
 	}
+	
 }
