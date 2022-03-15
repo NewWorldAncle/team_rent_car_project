@@ -16,6 +16,7 @@ input{
 
 h3{
 	font-size: 35px;
+	font-weight: bold;
 	margin-bottom: 80px;
 }
 
@@ -34,7 +35,7 @@ h3{
 	height: 100%;
 }
 
-.joinWrap {
+.joinWrap,.myListWrap {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -46,7 +47,7 @@ h3{
 	border-radius: 20px;
 }
 
-.joinWrap th{
+.joinWrap th,.myListWrap th {
 	font-size: 17px;
 	text-align: left;
 	padding: 0px 30px 0px 0px;
@@ -185,4 +186,12 @@ h4{
 	font-size: 20px;
 	font-weight: bold;
 	margin-bottom: 20px;
+}
+/*========================마이페이지*/
+
+.age_wrap select,
+.hobby_wrap select {
+	width:150px;
+	height: 30px;
+	margin-bottom: 30px;
 }
