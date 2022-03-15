@@ -4,12 +4,13 @@ import java.util.List;
 
 import org.vision.rentcar.model.RentReserve;
 import org.vision.rentcar.model.RentReserveView;
+import org.vision.rentcar.model.SearchCriteria;
 
 public interface ReserveDAO {
 	
 	public int insert(RentReserve dto) throws Exception;
 	//차량 전체 목록
-	public List<RentReserve> selectAll() throws Exception;
+	public List<RentReserve> selectAll(SearchCriteria scri) throws Exception;
 	//아이디 별 예약 결과 확인(유저용)
 	public List<RentReserveView> selectViewData(String memid) throws Exception;
 	//전체 예약 결과 확인(관리자용)
