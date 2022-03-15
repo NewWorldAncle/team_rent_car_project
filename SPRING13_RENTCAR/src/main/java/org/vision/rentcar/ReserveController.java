@@ -14,13 +14,16 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.vision.rentcar.dao.CarDAO;
 import org.vision.rentcar.dao.ReserveDAO;
+import org.vision.rentcar.model.PageMaker;
 import org.vision.rentcar.model.RentCar;
 import org.vision.rentcar.model.RentReserve;
 import org.vision.rentcar.model.RentReserveView;
+import org.vision.rentcar.model.SearchCriteria;
 import org.vision.rentcar.serviceMember.Constant;
 import org.vision.rentcar.serviceReserve.InfoUpdateService;
 import org.vision.rentcar.serviceReserve.RegisterService;
@@ -65,10 +68,16 @@ public class ReserveController {
 		return "home";
 	}
 	
-	@RequestMapping("/catalog")
-	public String catalog(Model model) {	//전체 명단
-		model.addAttribute("catalog", cdao.list());
+	@RequestMapping(value = "/catalog", method = RequestMethod.GET)
+	public String catalog(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception  {	//전체 명단
+		model.addAttribute("catalog", dao.selectAll(scri));
 		logger.info("catalog 실행.");
+		
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		
+		model.addAttribute("pageMaker", pageMaker);
+		
 		return "/reserve/catalog";	//catalog.jsp 실행
 	}
 	
