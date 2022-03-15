@@ -176,6 +176,7 @@ public class MemberController {
 		RentMember dto = new RentMember();
 		dto.setId(request.getParameter("id"));
 		dto.setPass(request.getParameter("pass"));
+		session.setMaxInactiveInterval(60*30);//30분
 		//기입한 정보 활용
 		RentMember login = dao.getMember(dto);
 		if(login != null) {	//로그인 성공!
@@ -189,7 +190,6 @@ public class MemberController {
 			PrintWriter out = response.getWriter();
 			out.println("<script>alert('아이디가 없거나 비밀번호가 다릅니다.'); location.href='loginForm';</script>");
 			out.flush();
-			
 		}
 		return returnURL;
 	}

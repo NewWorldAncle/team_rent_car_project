@@ -80,7 +80,7 @@ if (session.getAttribute("login") != null) {
 				%>
 				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
-				<li><a href="member/loginForm">Login</a></li>
+				<li><a href="loginForm">Login</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
 				<%
 					}

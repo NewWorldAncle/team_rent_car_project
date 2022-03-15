@@ -2,10 +2,11 @@ package org.vision.rentcar;
 
 import java.text.DateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
@@ -16,10 +17,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.vision.rentcar.dao.CarDAO;
-import org.vision.rentcar.serviceCar.CarRegisterService;
-import org.vision.rentcar.serviceCar.CarUpdateService;
-import org.vision.rentcar.serviceCar.ServiceCar;
+import org.vision.rentcar.dao.ReserveDAO;
+import org.vision.rentcar.model.RentCar;
+import org.vision.rentcar.model.RentReserve;
+import org.vision.rentcar.model.RentReserveView;
 import org.vision.rentcar.serviceMember.Constant;
+import org.vision.rentcar.serviceReserve.InfoUpdateService;
+import org.vision.rentcar.serviceReserve.RegisterService;
+import org.vision.rentcar.serviceReserve.ServiceReserve;
 
 /**
  * Handles requests for the application home page.
@@ -30,11 +35,17 @@ public class ReserveController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ReserveController.class);
 	private SqlSession sqlSession;
+	private CarDAO cdao;
+	private ReserveDAO dao;
+	private ServiceReserve service;
+	
 	
 	@Autowired
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
 		Constant.sqlSession = this.sqlSession;
+		cdao = sqlSession.getMapper(CarDAO.class);
+		dao = sqlSession.getMapper(ReserveDAO.class);
 	}
 	
 	/**
@@ -56,48 +67,86 @@ public class ReserveController {
 	
 	@RequestMapping("/catalog")
 	public String catalog(Model model) {	//전체 명단
+		model.addAttribute("catalog", cdao.list());
 		logger.info("catalog 실행.");
 		return "/reserve/catalog";	//catalog.jsp 실행
 	}
-//	
-//	@RequestMapping("/delete")
-//	public String carDelete(HttpServletRequest request) {
-//		CarDAO dao = sqlSession.getMapper(CarDAO.class);
-//		dao.delete(Integer.parseInt(request.getParameter("no")));
-//		logger.info("carDelete 실행.");
-//		return "redirect:carList";
-//	}
-//	
-//	@RequestMapping("/updateView")
-//	public String carUpdateView(Model model,HttpServletRequest request) {
-//		CarDAO dao = sqlSession.getMapper(CarDAO.class);
-//		model.addAttribute("carInfo", dao.selectByNo(Integer.parseInt(request.getParameter("no"))));
-//		logger.info("carUpdateView 실행.");
-//		return "/car/carUpdate";
-//	}
-//	
-//	@RequestMapping("/update")
-//	public String carUpdate(Model model,HttpServletRequest request) {
-//		model.addAttribute("request", request);
-//		service = new CarUpdateService();
-//		service.execute(model);
-//		logger.info("carUpdate 실행.");
-//		return "redirect:carList";
-//	}
-//	
-//	@RequestMapping("/register")
-//	public String register() {
-//		logger.info("register 실행.");
-//		return "/car/register";	//register.jsp 실행
-//	}
-//	
-//	@RequestMapping("/registerOk")
-//	public String registerOk(Model model,HttpServletRequest request,HttpServletResponse response) {
-//		model.addAttribute("request", request);
-//		model.addAttribute("response", response);
-//		service = new CarRegisterService();
-//		service.execute(model);
-//		logger.info("registerOk 실행.");
-//		return "redirect:carList";
-//	}
+	
+	@RequestMapping("allList")	//전체 예약 목룍
+	public String allList(HttpServletRequest request,Model model) throws Exception {
+		List<RentReserveView> list = dao.selectAllViewData();
+		model.addAttribute("allViewData", list);
+		logger.info("allList 실행.");
+		return "/reserve/allList";
+	}
+	
+	@RequestMapping("byMemList")	//유저별 예약 목록
+	public String byMemList(HttpServletRequest request,Model model) throws Exception {
+		HttpSession session = request.getSession();
+		String memid = (String) session.getAttribute("id");
+		List<RentReserveView> list = dao.selectViewData(memid);
+		model.addAttribute("id", memid);
+		model.addAttribute("viewData", list);
+		logger.info("byMemList 실행.");
+		return "/reserve/byMemList";
+	}
+
+	@RequestMapping("/delete1")
+	public String reserveDelete1(HttpServletRequest request) throws Exception {
+		dao.delete(Integer.parseInt(request.getParameter("regno")));
+		logger.info("reseveDelete1 실행.");
+		return "redirect:byMemList";
+	}
+	
+	@RequestMapping("/delete2")
+	public String reserveDelete2(HttpServletRequest request) throws Exception {
+		dao.delete(Integer.parseInt(request.getParameter("regno")));
+		logger.info("reseveDelete2 실행.");
+		return "redirect:byMemList";
+	}
+	
+	//예약 단계 1 - 예약준비
+	@RequestMapping(value="/regAction",method=RequestMethod.GET)
+	public String regAction(HttpServletRequest request,Model model) throws Exception {
+		HttpSession session = request.getSession();
+		String memid = (String)session.getAttribute("id");
+		int no = Integer.parseInt(request.getParameter("no"));
+		RentCar dto = cdao.selectByNo(no);
+		model.addAttribute("no",no);
+		model.addAttribute("memid",memid);
+		model.addAttribute("dto",dto);
+		logger.info("regAction 실행.");
+		return "/reserve/regForm";
+	}
+	
+	//예약 단계 2 - DB등록
+	@RequestMapping("regOk")
+	public String regOk(HttpServletRequest request,Model model) throws Exception {
+		model.addAttribute("request", request);
+		service = new RegisterService();
+		service.execute(model);
+		logger.info("regOk 실행.");
+		return "/reserve/result";
+	}
+	
+	@RequestMapping("infoView")
+	public String infoView(Model model, HttpServletRequest request) throws Exception {
+		int regno = Integer.parseInt(request.getParameter("regno"));
+		RentReserveView view = dao.selectEtc(regno);
+		RentReserve dto = dao.select(regno);
+		model.addAttribute("detailView", view);
+		model.addAttribute("detailDto", dto);
+		logger.info("infoView 실행.");
+		return "/reserve/infoView";
+	}
+	
+	@RequestMapping("/infoUp")
+	public String infoUp(Model model, HttpServletRequest request,RentReserveView dto) throws Exception {
+		model.addAttribute("request", request);
+		service = new InfoUpdateService();
+		service.execute(model);
+		logger.info("infoUp 실행.");
+		return "redirect:/reserve/byMemList?memid="+dto.getMemid();
+	}
+
 }
