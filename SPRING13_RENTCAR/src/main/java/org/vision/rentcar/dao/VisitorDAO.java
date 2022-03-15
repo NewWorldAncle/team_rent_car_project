@@ -11,3 +11,4 @@ public interface VisitorDAO{
     public List<String> selectVisitorBrowser();
     public List<String> selectVisitorBNum();
    }
+

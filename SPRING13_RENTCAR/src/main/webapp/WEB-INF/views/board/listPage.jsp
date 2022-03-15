@@ -1,12 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="${path}/resources/css/login_related.css" rel="stylesheet" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 	<title>게시판</title>
@@ -18,19 +19,72 @@
 </head>
 
 <body class="container">
-	<%	// 로그인 X
-		if(session.getAttribute("login") == null) {
-	%>
-	<h2><a href="/rentcar/">홈으로</a></h2><hr>
-	<% 
-		}
-		// 로그인 O
-		if(session.getAttribute("login") != null) {
-	%>
-	<h2><a href="/rentcar/member/">홈으로</a></h2><hr>
-	<% 
-		}
-	%>
+	<div class="navi_container">
+		<nav class="navi">
+			<div class="navi_logo">
+				<%
+					// 로그인 X
+				if (session.getAttribute("login") == null) {
+				%>
+				<a href="/rentcar/">V-RENTCAR</a>
+				<%
+					}
+				// 로그인 O
+				if (session.getAttribute("login") != null) {
+				%>
+				<a href="/rentcar/member/">V-RENTCAR</a>
+				<%
+					}
+				%>
+			</div>
+			<ul class="naiv_menu">
+				<%
+					//===============================================================================
+				//					로	그	인	된	상	태	-	관	리	자
+				//===============================================================================
+				if (session.getAttribute("login") != null) {
+					String mid = (String) session.getAttribute("id"); //String mid생성
+
+					if (mid.equals("admin")) { //관리자(admin) 로그인
+				%>
+				<li><a href="/rentcar/admin/pageAnalyze">PageAnalyze</a></li>
+				<li><a href="/rentcar/car/carList">RentCarList</a></li>
+				<li><a href="memList">Member</a></li>
+				<li><a href="/rentcar/board/listPage">QnA</a></li>
+				<li><a href="myList?id=${login.id}">MyPage</a></li>
+				<li id="a">관리자님 접속</li>
+				<li><a href="logout">Logout</a></li>
+				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
+				<%
+					} else {
+				//===============================================================================
+				//						로	그	인	된	상	태	-	유	저
+				//===============================================================================
+				%>
+				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
+				<li><a href="/rentcar/board/listPage">QnA</a></li>
+				<li><a href="myList?id=${login.id}">MyPage</a>
+				<li>
+				<li id="a"><%=mid%> 회원님 접속</li>
+				<li><a href="logout">Logout</a></li>
+				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
+				<%
+					}
+				} else {
+				//===============================================================================
+				//						로	그	인	안	된	상	태
+				//===============================================================================
+				%>
+				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
+				<li><a href="/rentcar/board/listPage">QnA</a></li>
+				<li><a href="member/loginForm">Login</a></li>
+				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
+				<%
+					}
+				%>
+			</ul>
+		</nav>
+	</div>
 	<h3>게시판</h3>
 	<form role="form" method="get">
 	
