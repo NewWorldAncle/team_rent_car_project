@@ -8,8 +8,7 @@
 <head>
 <title>/렌트카회사이름/</title>
 <link href="${path}/resources/css/common.css" rel="stylesheet" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/c895b3190c.js"
 	crossorigin="anonymous"></script>
 <script>
@@ -28,45 +27,96 @@
 	<div class="navi_container">
 		<nav class="navi">
 			<div class="navi_logo">
-				<h1>
-					<a href="home">V-RENTCAR</a>
-				</h1>
+			<%	// 로그인 X
+				if(session.getAttribute("login") == null) {
+			%>
+				<a href="/rentcar/">V-RENTCAR</a>
+			<% 
+				}
+				// 로그인 O
+				if(session.getAttribute("login") != null) {
+			%>
+				<a href="/rentcar/member/">V-RENTCAR</a>
+			<% 
+				}
+			%>
 			</div>
 			<ul class="naiv_menu">
-				<li><a href="carmain">RentCar</a></li>
-				<li><a href="boardmain">QnA</a></li>
-				<li><a href="#">Login</a></li>
+			<%
+			//===============================================================================
+			//					로	그	인	된	상	태	-	관	리	자
+			//===============================================================================
+				if(session.getAttribute("login") != null) {
+					String mid = (String)session.getAttribute("id"); //String mid생성
+				
+				if(mid.equals("admin"))	{	//관리자(admin) 로그인
+			%>
+				<li><a href="/rentcar/admin/pageAnalyze">PageAnalyze</a></li>
+				<li><a href="/rentcar/car/carList">RentCarList</a></li>
+				<li><a href="memList">Member</a></li>
+				<li><a href="/rentcar/board/listPage">QnA</a></li>
+				<li><a href="myList?id=${login.id}">MyPage</a></li>
+				<li id="a">관리자님 접속</li>
+				<li><a href="logout">Logout</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
+			<%
+				} else {
+			//===============================================================================
+			//						로	그	인	된	상	태	-	유	저
+			//===============================================================================
+			%>		
+				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
+				<li><a href="/rentcar/board/listPage">QnA</a></li>
+				<li><a href="myList?id=${login.id}">MyPage</a><li>
+				<li id="a"><%=mid %> 회원님  접속</li>
+				<li><a href="logout">Logout</a></li>
+				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
+			<%	
+				}
+				} else {
+			//===============================================================================
+			//						로	그	인	안	된	상	태
+			//===============================================================================
+			%>		
+				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
+				<li><a href="/rentcar/board/listPage">QnA</a></li>
+				<li><a href="member/loginForm">Login</a></li>
+				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
+			<%
+				}
+			%>
 			</ul>
 		</nav>
 	</div>
-	<div class="main_wrap">
+	
+<div class="main_wrap">
 		<div class="main_back_container">
 			<div class="back_G">
 				<div id="big_back"></div>
 				<div id="small_back">
-					<div id="top_triangle"></div>				
+					<div id="top_triangle"></div>
+					<div class="txt_scroll">Scroll Down</div>
 				</div>
 			</div>
 			<div class="back_Gimg">
 				<ul>
 					<li><img class="main_slider" alt="슬라이더 이미지1"
-						src="resources/img/mainslider1.jpg"></li>
+						src="${path}/resources/img/mainslider1.jpg"></li>
 					<li><img class="main_slider" alt="슬라이더 이미지2"
-						src="resources/img/mainslider2.jpg"></li>
+						src="${path}/resources/img/mainslider2.jpg"></li>
 					<li><img class="main_slider" alt="슬라이더 이미지3"
-						src="resources/img/mainslider3.jpg"></li>
+						src="${path}/resources/img/mainslider3.jpg"></li>
 				</ul>
 			</div>
 		</div>
 
-		<div class="txt_area">
+		<div class="txt_alogan">
 			<p>sub slogan position</p>
 			<h2>first main slogan position</h2>
 			<h2>second main slogan position</h2>
 		</div>
-		<div class="txt_scroll">Scroll Down</div>
 	</div>
+
 	
 	
 	<div class="location_info">

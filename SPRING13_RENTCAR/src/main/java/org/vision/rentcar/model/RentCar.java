@@ -40,10 +40,10 @@ public class RentCar {
 	public void setUsepeople(int usepepole) {
 		this.usepeople = usepepole;
 	}
-	public String getConpany() {
+	public String getCompany() {
 		return company;
 	}
-	public void setConpany(String company) {
+	public void setCompany(String company) {
 		this.company = company;
 	}
 	public String getImg() {

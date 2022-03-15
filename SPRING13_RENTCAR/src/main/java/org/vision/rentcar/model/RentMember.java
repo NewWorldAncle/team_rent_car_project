@@ -8,6 +8,21 @@ public class RentMember {
 	private String age;
 	private String job;
 	private String hobby;
+	
+	public RentMember() {
+		super();
+	}
+	public RentMember(String id, String pass, String email, String tel, String age, String job, String hobby) {
+		super();
+		this.id = id;
+		this.pass = pass;
+		this.email = email;
+		this.tel = tel;
+		this.age = age;
+		this.job = job;
+		this.hobby = hobby;
+	}
+
 	public String getId() {
 		return id;
 	}
@@ -50,11 +65,10 @@ public class RentMember {
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
 	}
+	
 	@Override
 	public String toString() {
-		return "멤버정보 [id=" + id + ", pass=" + pass + ", email=" + email + ", tel=" + tel + ", age=" + age
+		return "회원정보 [id=" + id + ", pass=" + pass + ", email=" + email + ", tel=" + tel + ", age=" + age
 				+ ", job=" + job + ", hobby=" + hobby + "]";
-	}
-	
-	
+	}	
 }

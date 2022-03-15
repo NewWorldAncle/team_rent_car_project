@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.vision.rentcar.dao.VisitorDAO">
-	<insert id="RentVisitor" parameterType="org.vision.rentcar.model.RentVisitor">
-		INSERT INTO RENT_VISITOR (VISIT_ID,VISIT_IP,VISIT_TIME,
-		<if test="visit_site != null and visit_site !=''">
-			VISIT_SITE,
-		</if>
-		VISIT_AGENT
+	<insert id="insertVisitor" parameterType="org.vision.rentcar.model.RentVisitor">
+		INSERT INTO RENT_VISITOR (VISIT_ID,VISIT_IP,VISIT_TIME,	VISIT_SITE, VISIT_AGENT
 		)
-		VALUES(VISITOR_SEQ.NEXTVAL,#{visit_ip},SYSDATETIME,
-		<if test="visit_site != null and visit_site !=''">
-			#{visit_site},
-		</if>
-		#{visit_agent}
+		VALUES(VISITOR_SEQ.NEXTVAL,#{visit_ip, jdbcType=VARCHAR},TO_CHAR(SYSDATE, 'YYYY-MM-DD'),#{visit_site, jdbcType=VARCHAR},#{visit_agent, jdbcType=VARCHAR}
 		)
 	</insert>
+	
+	<select id="selectVisitorDate" resultType="String">
+		SELECT VISIT_TIME FROM RENT_VISITOR GROUP BY VISIT_TIME ORDER BY VISIT_TIME
+	</select>
+		<select id="selectVisitorNum" resultType="Integer">
+		SELECT COUNT(*) FROM RENT_VISITOR GROUP BY VISIT_TIME ORDER BY VISIT_TIME
+	</select>
+		<select id="selectVisitorBrowser" resultType="String">
+		SELECT VISIT_AGENT FROM RENT_VISITOR GROUP BY VISIT_AGENT ORDER BY VISIT_AGENT
+	</select>
+	<select id="selectVisitorBNum" resultType="Integer">
+		SELECT COUNT(*) FROM RENT_VISITOR GROUP BY VISIT_AGENT ORDER BY VISIT_AGENT
+	</select>
+	
 </mapper>
