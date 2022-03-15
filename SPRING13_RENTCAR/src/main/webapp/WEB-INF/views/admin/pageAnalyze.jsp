@@ -4,23 +4,23 @@
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
-
 <head>
 <meta charset="UTF-8">
+<title>페이지 분석(관리자용)</title>
+<link href="${path}/resources/css/login_related.css" rel="stylesheet" />
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/c895b3190c.js"
 	crossorigin="anonymous"></script>
-<link href="${path}/resources/css/login_related.css" rel="stylesheet" />
-<title>로그인</title>
+<script
+	src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
 <%
 	request.setCharacterEncoding("UTF-8");
-response.setContentType("text/html; charset=UTF-8");
-session = request.getSession();
-if (session.getAttribute("login") != null) {
-	session.removeAttribute("login");
-}
+	response.setContentType("text/html; charset=UTF-8");
+	session = request.getSession();
 %>
 </head>
-
 <body>
 	<div class="navi_container">
 		<nav class="navi">
@@ -80,7 +80,7 @@ if (session.getAttribute("login") != null) {
 				%>
 				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
-				<li><a href="loginForm">Login</a></li>
+				<li><a href="member/loginForm">Login</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
 				<%
 					}
@@ -88,44 +88,82 @@ if (session.getAttribute("login") != null) {
 			</ul>
 		</nav>
 	</div>
-
-	<!-- 로그인부분 -->
 	<section class="joinSection">
-		<div class="login_wrap">
-			<h3>로그인</h3>
-			<form class="loginform" action="login" method="post">
-				<div class="loginId">
-					<h4>아이디</h4>
-					<p>
-						<input type="text" name="id" placeholder="아이디" required autofocus />
-					</p>
+		<div class="analyzeWrap">
+			<div class="chartSize">
+				<div>
+					일 방문자수
 				</div>
-				<div class="loginPw">
-					<h4>비밀번호</h4>
-					<p>
-						<input type="password" placeholder="비밀번호" name="pass" />
-					</p>
+				<canvas id="numChart"></canvas>
+			</div>
+			<div class="chartSize">
+				<div>
+					브라우저 사용 비율
 				</div>
-				<div class="loginEtc">
-					<input type="submit" value="로그인" id="submitForm" />
-				</div>
-				<div class="find_account">
-					<a href="#" target="_blank" onclick="openPopId()">아이디찾기</a>
-					<a href="#" target="_blank" onclick="openPopPw()">비밀번호찾기</a>
-					<a href="joinForm" id="joinForm">회원가입</a>
-					<script>
-						function openPopId() {
-							var popup = window.open('findIdForm', '아이디찾기',
-									'width=400px,height=200px');
-						}
-						function openPopPw() {
-							var popup = window.open('findPwForm', '비밀번호찾기',
-									'width=400px,height=200px');
-						}
-					</script>
-				</div>
-			</form>
+				<canvas id="browserChart"></canvas>
+			</div>
 		</div>
 	</section>
-</body>
+	<script type="text/javascript">
+		const visitorDate = ${visitorDate}
+		const visitorNum = ${visitorNum}
+		const backArry = [];
+		
+		for(var i =0; i< visitorDate.length;i++){
+			backArry.push("#262626")
+		}
+		
+		const borderArry = [];
+		for(var i =0; i< visitorDate.length;i++){
+			borderArry.push("#0C0C0C")
+		}
+		const ctx = document.getElementById('numChart').getContext('2d');
+		const numChart = new Chart(ctx, {
+    		type: 'bar',
+            data: {
+				labels:visitorDate,
+                datasets:[{
+                	label: '일 방문자수',
+                    fill: false,
+                    data: visitorNum,
+                    backgroundColor: backArry,
+                    borderColor: backArry,
+					borderWidth: 1
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [
+                            {
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }
+                        ]
+                    }
+                }
+            });
+
+        </script>
+        <script type="text/javascript">
+        new Chart(document.getElementById("browserChart"), {
+            type: 'pie',
+            data: {
+              labels: (${visitorBrowser}),
+              datasets: [{
+                label: "브라우저 접속 비율",
+                backgroundColor: ["#000000", "#484848","#717171","#ADADAD","#CFCFCF","#E6E6E6"],
+                data: (${visitorNum})
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: '총 브라우저 접속 비율'
+              }
+            }
+        });
+        
+        </script>
+    </body>
 </html>

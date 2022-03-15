@@ -8,8 +8,7 @@
 <head>
 <title>/렌트카회사이름/</title>
 <link href="${path}/resources/css/common.css" rel="stylesheet" />
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://kit.fontawesome.com/c895b3190c.js"
 	crossorigin="anonymous"></script>
 <script>
@@ -52,6 +51,7 @@
 				
 				if(mid.equals("admin"))	{	//관리자(admin) 로그인
 			%>
+				<li><a href="/rentcar/admin/pageAnalyze">PageAnalyze</a></li>
 				<li><a href="/rentcar/car/carList">RentCarList</a></li>
 				<li><a href="memList">MemberList</a></li>
 				<li><a href="/rentcar/reserve/allList">ReserveList</a></li>

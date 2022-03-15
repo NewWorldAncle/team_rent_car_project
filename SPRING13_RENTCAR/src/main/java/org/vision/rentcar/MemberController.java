@@ -242,4 +242,6 @@ public class MemberController {
 		service2.execute2(response, dto);
 		logger.info("findPw 실행");
 	}
+	
+
 }
