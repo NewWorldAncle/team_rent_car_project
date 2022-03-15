@@ -2,25 +2,37 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.vision.rentcar.dao.ReserveDAO">
 	<insert id="insert">
-		INSERT INTO RENT_RESERVE (RENTNO,NO,QTY,DDAY,RDAY,INSURANCE,WIFI,NAVIGATION,BABYSEAT,MEMID)
+		INSERT INTO RENT_RESERVE (REGNO,NO,QTY,DDAY,RDAY,INSURANCE,WIFI,NAVIGATION,BABYSEAT,MEMID)
 		 VALUES 
 		 (RENT_RESERVE_SEQ.NEXTVAL,#{no},#{qty},#{dday},#{rday},#{insurance},#{wifi},#{navigation},#{babyseat},#{memid})
 	</insert>
 	
-	<select id="select" parameterType="org.vision.rentcar.model.RentReserve">
-		SELECT * FROM RENT_RESERVE WHERE RENTNO = #{rentno}
+	<select id="selectEtc" parameterType="org.vision.rentcar.model.RentReserve" resultType="org.vision.rentcar.model.RentReserveView">
+		SELECT * FROM RESERVE_VIEW WHERE REGNO = #{regno}
+	</select>
+	
+	<select id="select" parameterType="org.vision.rentcar.model.RentReserve" resultType="org.vision.rentcar.model.RentReserve">
+		SELECT * FROM RENT_RESERVE WHERE REGNO = #{regno}
 	</select>
 	
 	<select id="selectAll" parameterType="org.vision.rentcar.model.RentReserve">
 		SELECT * FROM RENT_RESERVE
 	</select>
 	
-	<update id="update">
-		UPDATE RENT_RESERVE SET NO = #{no},QTY = #{qty},DDAY = #{dday},RDAY = #{rday},INSURANCE = #{insurance},WIFI = #{wifi},NAVIGATION = #{navigation},BABYSEAT = #{babyseat}
-		 WHERE RENTNO = #{rentno}
+	<select id="selectViewData" resultType="org.vision.rentcar.model.RentReserveView">
+		SELECT * FROM RESERVE_VIEW WHERE MEMID=#{memid}
+	</select>
+	
+	<select id="selectAllViewData" resultType="org.vision.rentcar.model.RentReserveView">
+		SELECT * FROM RESERVE_VIEW
+	</select>
+	
+	<update id="update" parameterType="org.vision.rentcar.model.RentReserve">
+		UPDATE RENT_RESERVE SET NO=#{no}, QTY=#{qty}, DDAY=#{dday}, RDAY=#{rday}, INSURANCE=#{insurance}, WIFI=#{wifi}, NAVIGATION=#{navigation}, BABYSEAT=#{babyseat}
+		 WHERE REGNO = #{regno}
 	</update>
 	
 	<delete id="delete" parameterType="Integer">
-		DELETE FROM RENT_RESERVE WHERE RENTNO = #{rentno}
+		DELETE FROM RENT_RESERVE WHERE REGNO=#{regno}
 	</delete>
 </mapper>

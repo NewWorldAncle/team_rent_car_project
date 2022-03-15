@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib  prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <!DOCTYPE html>
 <html>
 
 <head>
 	<meta charset="UTF-8">
-	<title>렌트카</title>
+	<title>렌트카 리스트</title>
 	<%
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -16,7 +16,6 @@
 </head>
 
 <body>
-	<h1>렌트카 카탈로그</h1>
 	<%	// 로그인 X
 		if(session.getAttribute("login") == null) {
 	%>
@@ -30,8 +29,9 @@
 	<% 
 		}
 	%>
+	<h3>렌트카 리스트</h3>
 	
-		<table>
+	<table>
 		<tr>
 			<th>번호</th>
 			<th>모델명</th>
