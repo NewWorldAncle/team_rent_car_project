@@ -16,6 +16,7 @@
 </head>
 
 <body>
+<form role="form" method="get">
 	<%	// 로그인 X
 		if(session.getAttribute("login") == null) {
 	%>
@@ -30,6 +31,24 @@
 		}
 	%>
 	<h3>차량 목록</h3>
+
+  <div class="search" style="float:right;">
+    <select name="searchType">
+      <option value="cn"<c:out value="${scri.searchType eq 'cn' ? 'selected' : ''}"/>>차량 이름</option>
+    </select>
+
+    <input type="text" name="keyword" id="keywordInput" value="${scri.keyword}"/>
+
+    <button id="searchBtn" type="submit">검색</button>
+    <script>
+      $(function(){
+        $('#searchBtn').click(function() {
+          self.location = "catalog" + '${pageMaker.makeQuery(1)}' + "&searchType=" + $("select option:selected").val() + "&keyword=" + encodeURIComponent($('#keywordInput').val());
+        });
+      });   
+    </script>
+  </div>	
+	
 	
 	<table width="1000" align="center">
 	<c:forEach items="${catalog}" var="dto">
@@ -43,6 +62,6 @@
 		</tr>
 	</c:forEach>
 	</table>
-	
+</form>	
 </body>
 </html>
