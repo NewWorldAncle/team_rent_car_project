@@ -5,7 +5,7 @@ public class RentVisitor {
 	}
 	private int visit_id;
     private String visit_ip;
-    private int visit_time;
+    private String visit_time;
     private String visit_site;
     private String visit_agent;
 
@@ -24,10 +24,10 @@ public class RentVisitor {
 	public void setVisit_ip(String string) {
 		this.visit_ip = string;
 	}
-	public int getVisit_time() {
+	public String getVisit_time() {
 		return visit_time;
 	}
-	public void setVisit_time(int visit_time) {
+	public void setVisit_time(String visit_time) {
 		this.visit_time = visit_time;
 	}
 	public String getVisit_site() {
@@ -42,5 +42,7 @@ public class RentVisitor {
 	public void setVisit_agent(String string) {
 		this.visit_agent = string;
 	}
+
+	
     
 }

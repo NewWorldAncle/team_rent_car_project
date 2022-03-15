@@ -1,5 +1,7 @@
 package org.vision.rentcar;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import org.apache.ibatis.session.SqlSession;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.vision.rentcar.dao.BoardDAO;
 import org.vision.rentcar.dao.CarDAO;
+import org.vision.rentcar.dao.VisitorDAO;
+import org.vision.rentcar.model.RentVisitor;
 
 /**
  * Handles requests for the application home page.
@@ -33,23 +37,39 @@ public class HomeController {
 		return "home";
 	}
 	
-	@RequestMapping("/carmain")
-	public String carTest(Model model){
+	@RequestMapping(value = "/admin/pageAnalyze")
+	public String adminInsite(Locale locale, Model model) {
+		logger.info("pageAnalyze 실행", locale);
 		
-		CarDAO dao = SqlSession.getMapper(CarDAO.class);
-		model.addAttribute("carDAO", dao.list());
-		System.out.println(dao.list().toString());
-		return "carmain";
-		
+		VisitorDAO dao = SqlSession.getMapper(VisitorDAO.class);
+		List<String> list = dao.selectVisitorDate();
+		List<String> sendList = new ArrayList<String>();
+		for(String x : list) {	
+			sendList.add("'"+x+"'");
+		}
+		System.out.println(dao.selectVisitorNum());
+		model.addAttribute("visitorDate",sendList);
+		model.addAttribute("visitorNum",dao.selectVisitorNum());
+		return "/admin/pageAnalyze";
 	}
 	
-	@RequestMapping(value = {"/boardmain"})
-	public String boardTest(Locale locale, Model model) throws Exception {
-		logger.info("Welcome home! The client locale is {}.", locale);
-		BoardDAO dao = SqlSession.getMapper(BoardDAO.class);
-		
-//		model.addAttribute("serverTime", dao.list());
-		
-		return "boardmain";
-	}
+//	@RequestMapping("/carmain")
+//	public String carTest(Model model){
+//		
+//		CarDAO dao = SqlSession.getMapper(CarDAO.class);
+//		model.addAttribute("carDAO", dao.list());
+//		System.out.println(dao.list().toString());
+//		return "carmain";
+//		
+//	}
+//	
+//	@RequestMapping(value = {"/boardmain"})
+//	public String boardTest(Locale locale, Model model) throws Exception {
+//		logger.info("Welcome home! The client locale is {}.", locale);
+//		BoardDAO dao = SqlSession.getMapper(BoardDAO.class);
+//		
+////		model.addAttribute("serverTime", dao.list());
+//		
+//		return "boardmain";
+//	}
 }

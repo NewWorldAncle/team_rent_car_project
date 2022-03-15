@@ -50,6 +50,7 @@ if (session.getAttribute("login") != null) {
 
 					if (mid.equals("admin")) { //관리자(admin) 로그인
 				%>
+				<li><a href="/rentcar/admin/pageAnalyze">PageAnalyze</a></li>
 				<li><a href="/rentcar/car/carList">RentCarList</a></li>
 				<li><a href="memList">Member</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
