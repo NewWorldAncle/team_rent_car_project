@@ -15,9 +15,19 @@
 		SELECT * FROM RENT_RESERVE WHERE REGNO = #{regno}
 	</select>
 	
-	<select id="selectAll" parameterType="org.vision.rentcar.model.RentReserve">
-		SELECT * FROM RENT_RESERVE
+	<select id="selectAll" resultType="org.vision.rentcar.model.RentCar" parameterType="org.vision.rentcar.model.SearchCriteria" >
+		SELECT NAME,NO,IMG
+		FROM (SELECT NAME,NO,IMG
+		FROM RENTCAR
+		WHERE 1=1	
+		<include refid="search"></include> ) RENTCAR	
 	</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'cn'.toString()">AND NAME LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
 	
 	<select id="selectViewData" resultType="org.vision.rentcar.model.RentReserveView">
 		SELECT * FROM RESERVE_VIEW WHERE MEMID=#{memid}
