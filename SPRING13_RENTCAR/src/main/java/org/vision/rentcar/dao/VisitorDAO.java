@@ -8,4 +8,6 @@ public interface VisitorDAO{
     public int insertVisitor(RentVisitor vo);
     public List<String> selectVisitorDate();
     public List<String> selectVisitorNum();
+    public List<String> selectVisitorBrowser();
+    public List<String> selectVisitorBNum();
    }

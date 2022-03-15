@@ -13,11 +13,12 @@
 <script src="https://kit.fontawesome.com/c895b3190c.js"
 	crossorigin="anonymous"></script>
 <script
-	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+	src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1/dist/chart.min.js"></script>
+
 <%
 	request.setCharacterEncoding("UTF-8");
-response.setContentType("text/html; charset=UTF-8");
-session = request.getSession();
+	response.setContentType("text/html; charset=UTF-8");
+	session = request.getSession();
 %>
 </head>
 <body>
@@ -87,15 +88,22 @@ session = request.getSession();
 			</ul>
 		</nav>
 	</div>
-
-	<div style="width: 500px; height: 900px;">
-		<!--차트가 그려질 부분-->
-		<canvas id="numChart"></canvas>
-	</div>
-	<div style="width: 500px; height: 900px;">
-		<!--차트가 그려질 부분-->
-		<canvas id="browserChart"></canvas>
-	</div>
+	<section class="joinSection">
+		<div class="analyzeWrap">
+			<div class="chartSize">
+				<div>
+					일 방문자수
+				</div>
+				<canvas id="numChart"></canvas>
+			</div>
+			<div class="chartSize">
+				<div>
+					브라우저 사용 비율
+				</div>
+				<canvas id="browserChart"></canvas>
+			</div>
+		</div>
+	</section>
 	<script type="text/javascript">
 		const visitorDate = ${visitorDate}
 		const visitorNum = ${visitorNum}
@@ -115,7 +123,7 @@ session = request.getSession();
             data: {
 				labels:visitorDate,
                 datasets:[{
-                	label: '일별 방문자수',
+                	label: '일 방문자수',
                     fill: false,
                     data: visitorNum,
                     backgroundColor: backArry,
@@ -135,27 +143,27 @@ session = request.getSession();
                     }
                 }
             });
+
         </script>
         <script type="text/javascript">
-			const ctx2 = document.getElementById('browserChart').getContext('2d');
-			const browserChart = new Chart(ctx2, {
-	    		type: 'doughnut',
-	            data: labels:[
-	                'Red',
-	                'Blue',
-	                'Yellow'
-	              ],
-	              datasets: [{
-	                label: 'My First Dataset',
-	                data: [300, 50, 100],
-	                backgroundColor: [
-	                  'rgb(255, 99, 132)',
-	                  'rgb(54, 162, 235)',
-	                  'rgb(255, 205, 86)'
-	                ],
-	                hoverOffset: 4
-	              }]
-	            };
+        new Chart(document.getElementById("browserChart"), {
+            type: 'pie',
+            data: {
+              labels: (${visitorBrowser}),
+              datasets: [{
+                label: "브라우저 접속 비율",
+                backgroundColor: ["#000000", "#484848","#717171","#ADADAD","#CFCFCF","#E6E6E6"],
+                data: (${visitorNum})
+              }]
+            },
+            options: {
+              title: {
+                display: true,
+                text: '총 브라우저 접속 비율'
+              }
+            }
+        });
+        
         </script>
     </body>
 </html>

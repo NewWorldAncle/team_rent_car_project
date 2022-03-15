@@ -14,4 +14,11 @@
 		<select id="selectVisitorNum" resultType="Integer">
 		SELECT COUNT(*) FROM RENT_VISITOR GROUP BY VISIT_TIME ORDER BY VISIT_TIME
 	</select>
+		<select id="selectVisitorBrowser" resultType="String">
+		SELECT VISIT_AGENT FROM RENT_VISITOR GROUP BY VISIT_AGENT ORDER BY VISIT_AGENT
+	</select>
+	<select id="selectVisitorBNum" resultType="Integer">
+		SELECT COUNT(*) FROM RENT_VISITOR GROUP BY VISIT_AGENT ORDER BY VISIT_AGENT
+	</select>
+	
 </mapper>

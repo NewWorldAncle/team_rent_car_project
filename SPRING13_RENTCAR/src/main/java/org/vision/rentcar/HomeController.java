@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -43,14 +45,29 @@ public class HomeController {
 		
 		VisitorDAO dao = SqlSession.getMapper(VisitorDAO.class);
 		List<String> list = dao.selectVisitorDate();
+		List<String> blist = dao.selectVisitorBrowser();
 		List<String> sendList = new ArrayList<String>();
+		List<String> bsendList = new ArrayList<String>();
 		for(String x : list) {	
 			sendList.add("'"+x+"'");
+		}
+		for(String x : blist) {
+			bsendList.add("'"+x+"'");
 		}
 		System.out.println(dao.selectVisitorNum());
 		model.addAttribute("visitorDate",sendList);
 		model.addAttribute("visitorNum",dao.selectVisitorNum());
+		model.addAttribute("visitorBrowser",bsendList);
+		model.addAttribute("visitorNum",dao.selectVisitorBNum());
+		System.out.println(bsendList.toString()+"브라우저");
+		System.out.println(dao.selectVisitorBNum().toString()+"브라우저 횟수");
 		return "/admin/pageAnalyze";
+	}
+	@RequestMapping("*/logout")
+	public String logout(HttpSession session) {
+		session.invalidate();	//세션 제거
+		System.out.println("로그아웃 성공.");
+		return "redirect:/";
 	}
 	
 //	@RequestMapping("/carmain")
