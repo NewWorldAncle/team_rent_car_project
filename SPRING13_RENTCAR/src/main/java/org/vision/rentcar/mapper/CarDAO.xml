@@ -9,8 +9,18 @@
 	
 	<!-- 렌트카 목록 -->
 	<select id="list" resultType="org.vision.rentcar.model.RentCar">
-		SELECT * FROM RENTCAR
+		SELECT NO,NAME,CATEGORY,PRICE,USEPEOPLE,COMPANY,IMG,INFO
+		FROM (SELECT NO,NAME,CATEGORY,PRICE,USEPEOPLE,COMPANY,IMG,INFO
+		FROM RENTCAR
+		WHERE 1=1	
+		<include refid="search"></include> ) RENTCAR	
 	</select>
+	
+	<sql id="search">
+		<if test="searchType != null">
+			<if test="searchType == 'cn'.toString()">AND NAME LIKE '%' || #{keyword} || '%'</if>
+		</if>
+	</sql>
 	
 	<!-- 렌트카 수정 정보 불러오기 -->
 	<select id="selectByNo" resultType="org.vision.rentcar.model.RentCar">
