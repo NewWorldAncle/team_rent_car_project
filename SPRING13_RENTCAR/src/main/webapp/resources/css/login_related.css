@@ -32,10 +32,11 @@ h3{
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 100%;
+	min-height:100%;
 }
 
-.joinWrap,.myListWrap {
+.joinWrap,
+.myListWrap {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -43,7 +44,7 @@ h3{
 	color: #232F3E;
 	background: white;
 	width: 800px;
-	height: 1000px;
+	height:1000px;
 	border-radius: 20px;
 }
 
@@ -88,7 +89,7 @@ h3{
 	width:100px;
 	height: 30px;
 	border: none;
-	border-radius: 15px;
+	border-radius: 10px;
 	margin-top: 60px;
 	color: white;
 }
@@ -120,7 +121,7 @@ h3{
 	color: #232F3E;
 	background: white;
 	width: 600px;
-	height: 800px;
+	height: 1000px;
 	border-radius: 20px;
 }
 
@@ -194,4 +195,42 @@ h4{
 	width:150px;
 	height: 30px;
 	margin-bottom: 30px;
+}
+
+/*======================== 예약확인*/
+.regWrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #232F3E;
+	background: white;
+	width: 60%;
+	height: 800px;
+	border-radius: 20px;
+}
+.reg_container{
+	display:flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+}
+.reg_content{
+	display: flex;
+	flex-direction: row;
+}
+.reg_img{
+	padding: 0px 60px 0px 0px;
+}
+.reg_info > table > tbody >  tr > td:nth-child(1){
+	padding: 6px 10px;
+	
+}
+.regButton{
+	margin: 0px 20px 0px 20px;
+}
+.cost{
+	font-size:20px;
+	font-weight: bold;
 }
