@@ -85,12 +85,47 @@
 		</nav>
 	</div>
 	<!-- ===========================================네비 메뉴 끝 =============================== -->
+	
 	<section class="joinSection">
 			<div class="reserveCheckWrap">
 	<h3 class="recoText carlist">렌트카 리스트</h3>
 	<div class="carinsertButton">
 		<a href="register">차량 등록</a>
 	</div>
+	
+	<form role="form" method="get">
+		<div class="search" style="float:right;">
+			<select name="searchType">
+				<option value="cn"
+					<c:out value="${scri.searchType eq 'cn' ? 'selected' : ''}"/>>차량
+					이름</option>
+			</select> 
+			<input type="text" name="keyword" id="keywordInput"
+				value="${scri.keyword}" />
+	
+			<button id="searchBtn" type="submit">검색</button>
+			<script>
+				$(function() {
+					$('#searchBtn').click(
+							function() {
+								self.location = "catalog"
+										+ '${pageMaker.makeQuery(1)}'
+										+ "&searchType="
+										+ $("select option:selected").val()
+										+ "&keyword="
+										+ encodeURIComponent($('#keywordInput')
+												.val());
+							});
+				});
+			</script>
+		</div>	
+	</form>
+	
+	
+	
+	
+	
+	
 	<table class="reserveList">
 		<tr>
 			<th>번호</th>
