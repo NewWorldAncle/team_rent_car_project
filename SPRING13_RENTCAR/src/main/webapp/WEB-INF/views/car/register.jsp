@@ -80,10 +80,11 @@
 		</nav>
 	</div>
 	<!-- ===========================================네비 메뉴 끝 =============================== -->
-	
-	<h3>렌트카 등록</h3>
+<section class="joinSection">
+	<div class="car_wrap">	
+	<h3 class="carHead">렌트카 등록</h3>
 	<form action="registerOk" method="post">
-		<table border="1">
+		<table class="carTable">
 			<tr>
 				<td>이름</td>
 				<td><input type="text" name="name"></td>
@@ -127,11 +128,15 @@
 			</tr>
 			<tr>
 				<td colspan="2">
-					<input type="submit" value="등록하기">
-					<input type="button" value="취소" onclick="javascript:window.location='/rentcar/car/carList'"/>
 				</td>
 			</tr>
 		</table>
+		<div class="menu_wrap">
+			<input class="ok_button btnSpace" type="submit" value="등록하기">
+			<input class="no_button btnSpace" type="button" value="취소" onclick="javascript:window.location='/rentcar/car/carList'"/>
+		</div>
 	</form>
+	</div>
+	</section>
 </body>
 </html>

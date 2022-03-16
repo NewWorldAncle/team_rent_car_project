@@ -47,3 +47,38 @@
 button{
 	margin:15px 0px;
 }
+.carinsertButton{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	width:150px;
+	height: 40px;
+	background: black;
+	border: none;
+	border-radius: 10px;
+	margin-bottom:60px;
+	color: white;
+}
+.BatchButton{
+		display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	font-size: 18px;
+	width:200px;
+	height: 40px;
+	background: black;
+	border: none;
+	border-radius: 10px;
+	margin-bottom:60px;
+	color: white;
+	
+}
+.carinsertButton>a{
+	padding: 11px 35px;
+}
+.carlist{
+	margin-top:60px;
+}
