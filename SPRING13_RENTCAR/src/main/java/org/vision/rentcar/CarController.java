@@ -13,9 +13,12 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.vision.rentcar.dao.CarDAO;
+import org.vision.rentcar.model.PageMaker;
+import org.vision.rentcar.model.SearchCriteria;
 import org.vision.rentcar.serviceCar.CarRegisterService;
 import org.vision.rentcar.serviceCar.CarUpdateService;
 import org.vision.rentcar.serviceCar.ServiceCar;
@@ -55,11 +58,14 @@ public class CarController {
 		return "home";
 	}
 	
-	@RequestMapping("/carList")
-	public String carList(Model model) {	//전체 명단
+	@RequestMapping(value = "/carList", method = RequestMethod.GET)
+	public String carList(Model model, @ModelAttribute("scri") SearchCriteria scri) throws Exception {	//전체 명단
 		CarDAO dao = sqlSession.getMapper(CarDAO.class);
-		model.addAttribute("carList", dao.list());
+		model.addAttribute("carList", dao.list(scri));
 		logger.info("carList 실행.");
+		PageMaker pageMaker = new PageMaker();
+		pageMaker.setCri(scri);
+		model.addAttribute("pageMaker", pageMaker);
 		return "/car/carList";	//catalog.jsp 실행
 	}
 	
