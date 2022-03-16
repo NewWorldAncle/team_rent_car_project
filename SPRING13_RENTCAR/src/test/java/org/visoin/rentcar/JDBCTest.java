@@ -12,6 +12,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.vision.rentcar.dao.CarDAO;
 import org.vision.rentcar.model.RentCar;
+import org.vision.rentcar.model.SearchCriteria;
 
 //spring-test 사용
 
@@ -23,6 +24,7 @@ public class JDBCTest {
 	@Autowired
 	private SqlSession sqlSession;
 	private CarDAO dao;
+	private SearchCriteria scri;
 
 	@Before
 	public void init() {
@@ -31,8 +33,8 @@ public class JDBCTest {
 	}
 
 	@Test
-	public void connectionTest(){
-		List<RentCar> list = dao.list();
+	public void connectionTest() throws Exception{
+		List<RentCar> list = dao.list(scri);
 		System.out.println(list);
 	}
 
