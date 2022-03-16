@@ -42,7 +42,6 @@ public class ReserveController {
 	private ReserveDAO dao;
 	private ServiceReserve service;
 	
-	
 	@Autowired
 	public void setSqlSession(SqlSession sqlSession) {
 		this.sqlSession = sqlSession;
