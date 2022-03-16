@@ -1,0 +1,100 @@
+@charset "UTF-8";
+
+@import "login_related.css";
+.recoProduct{
+	background:#F6F7FB;
+	height:auto;
+	padding:50px 0px 0px;
+	overflow:hidden;
+}
+.recoText{
+	font-size:35px;
+	font-weight:600;
+	margin: 0px 0px 20px;
+	text-align:center;
+}
+.search{
+	display: flex;
+	justify-content: flex-end;
+	margin: 40px 100px 40px 0px;
+}
+#keywordInput{
+	background-color: #F6F7FB;
+}
+#searchBtn{
+	background: black;
+	font-size: 15px;
+	width:50px;
+	height: 20px;
+	border: none;
+	border-radius: 5px;
+	color: white;
+}
+.recoContain{
+	display:flex;
+	flex-flow :row wrap;
+	justify-content:space-around;
+	background: #e7e7e7;
+	padding:40px 0px 0px;
+}
+
+.recoBox{
+	display:inline-block;
+	cursor:pointer;
+	position: relative;
+	background:white;
+	width:394px;
+	height:367px;
+	margin:0px 40px 100px;
+	color:#5F6368;
+	font-family: 'Noto Sans KR', sans-serif;
+	border:1px solid #E8E9ED;
+	border-radius: 10px;
+	overflow: hidden;
+}
+
+.boxImg{
+	width:394px;
+	height:300px;
+	overflow: hidden;
+}
+.boxImg img{
+	width:394px;
+	height:300px;
+	object-fit: scale-down;
+}
+
+.zoom{
+	transform:scale(1.1);
+	transition:transform 0.5s;
+}
+.zoomout{
+	transform:scale(1);
+	transition:transform 0.5s; 
+}
+.hilit{
+	color:#000000;
+	font-weight:bold;
+	transition:transform 0.5s;
+}
+.hilitout{
+	color:#5F6368;
+	transition:transform 0.5s;
+}
+.boxShadow{
+	box-shadow: 0px 0px 50px 1px #b3b3b3;
+}
+.boxShadowout{
+	box-shadow: none;
+}
+
+
+.boxInfo{
+	background:white;
+	padding:15px 20px 0px;
+}
+.proName{
+	background:white;
+	margin:0px 0px 10px;
+	font-size:22px;
+}

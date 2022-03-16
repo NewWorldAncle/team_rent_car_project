@@ -1,0 +1,49 @@
+@charset "UTF-8";
+@import "login_related.css";
+
+.reserveCheckWrap{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #232F3E;
+	background: white;
+	width: 90%;
+	height:auto;
+	border-radius: 20px;
+}
+.reserveHead{
+	padding-top: 100px;
+}
+.reserveList{
+	text-align: center;
+	justify-content: center;
+}
+  table {
+    width:95%;
+    border-top: 2px solid #D1D1D1;
+    border-collapse: collapse;
+    margin: 0px 0px 50px 0px;
+  }
+  th{
+  	border-right: 2px solid #D1D1D1;
+  }
+  th:last-child{
+  	border-right:none;
+  }
+  td{
+  	width:40px;
+  }
+  th, td {
+    border-bottom: 2px solid #D1D1D1;
+    padding: 10px;
+    vertical-align : middle;
+  }
+.memListImg{
+	width: 250px;
+	height: 200px;
+	object-fit: scale-down;
+}
+button{
+	margin:15px 0px;
+}
