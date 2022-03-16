@@ -2,28 +2,27 @@
 
 @import "common.css";
 
-
 .navi_container {
 	display: block;
 	position: relative;
 }
-input{
+
+input {
 	border-top: none;
 	border-left: none;
 	border-right: none;
 	border-bottom: 1px solid rgb(182, 182, 182);
 }
 
-h3{
+h3 {
 	font-size: 35px;
 	font-weight: bold;
 	margin-bottom: 80px;
 }
 
-.navi{
+.navi {
 	background-color: black;
 }
-
 
 /*=========================회원가입부분*/
 .joinSection {
@@ -32,11 +31,10 @@ h3{
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	min-height:100%;
+	min-height: 100%;
 }
 
-.joinWrap,
-.myListWrap {
+.joinWrap, .myListWrap {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -44,49 +42,48 @@ h3{
 	color: #232F3E;
 	background: white;
 	width: 800px;
-	height:1000px;
+	height: 1000px;
 	border-radius: 20px;
 }
 
-.joinWrap th,.myListWrap th {
+.joinWrap th, .myListWrap th {
 	font-size: 17px;
 	text-align: left;
 	padding: 0px 30px 0px 0px;
 }
 
-
-.id_wrap input,
-.pass_wrap input,
-.pass_chk_wrap input,
-.eamil_wrap input,
-.tel_wrap input{
+.id_wrap input, .pass_wrap input, .pass_chk_wrap input, .eamil_wrap input,
+	.tel_wrap input {
 	width: 300px;
 	height: 30px;
 	margin-bottom: 30px;
 }
 
 .age_wrap input {
-	width:15px;
+	width: 15px;
 	height: 15px;
 	margin-bottom: 30px;
 }
 
-.job_wrap select{
-	width:150px;
+.job_wrap select {
+	width: 150px;
 	height: 30px;
 	margin-bottom: 30px;
 }
+
 .hobby_wrap input {
-	width:15px;
+	width: 15px;
 	height: 15px;
 	margin-bottom: 10px;
 }
+
 .menu_wrap>td {
 	text-align: center;
 }
-.menu_wrap input{
+
+.menu_wrap input {
 	font-size: 20px;
-	width:100px;
+	width: 100px;
 	height: 30px;
 	border: none;
 	border-radius: 10px;
@@ -94,26 +91,26 @@ h3{
 	color: white;
 }
 
-.ok_button{
+.ok_button {
 	background: black;
-
 }
+
 .ok_button:hover {
 	background: #2F2F2F;
 	box-shadow: 0px 0px 30px 5px #b3b3b3;
 }
 
-
-.no_button{
-	background: #AAAAAA;	
+.no_button {
+	background: #AAAAAA;
 }
+
 .no_button:hover {
 	background: #DF5A4F;
 	box-shadow: 0px 0px 30px 5px #b3b3b3;
 }
 
 /*=================================로그인부분*/
-.login_wrap{
+.login_wrap {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -125,38 +122,37 @@ h3{
 	border-radius: 20px;
 }
 
-h4{
-	font-size:25px;
-	margin:0px 0px 40px 0px;
+h4 {
+	font-size: 25px;
+	margin: 0px 0px 40px 0px;
 }
-.loginId input,
-.loginPw input{
+
+.loginId input, .loginPw input {
 	width: 300px;
 	height: 30px;
-	font-size:18px;
+	font-size: 18px;
 	margin-bottom: 30px;
 }
 
-.loginEtc,
-.find_account {
+.loginEtc, .find_account {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
 }
 
-
-#submitForm{
+#submitForm {
 	text-shadow: none;
 	font-size: 16px;
-	width:305px;
+	width: 305px;
 	height: 50px;
-	background-color:black;
+	background-color: black;
 	border: none;
 	border-radius: 10px;
 	margin: 20px 0px 45px 0px;
 	color: white;
 }
-.find_account a{
+
+.find_account a {
 	text-shadow: none;
 	color: black;
 	font-size: 15px;
@@ -164,7 +160,7 @@ h4{
 	margin: 0px 10px;
 }
 /*====================인사이트 분석 부분*/
-.analyzeWrap{
+.analyzeWrap {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -175,7 +171,8 @@ h4{
 	height: 85%;
 	border-radius: 20px;
 }
-.chartSize{
+
+.chartSize {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -183,16 +180,15 @@ h4{
 	height: 70%;
 	margin: 100px 50px 0px 50px;
 }
-.chartSize>div{
+
+.chartSize>div {
 	font-size: 20px;
 	font-weight: bold;
 	margin-bottom: 20px;
 }
 /*========================마이페이지*/
-
-.age_wrap select,
-.hobby_wrap select {
-	width:150px;
+.age_wrap select, .hobby_wrap select {
+	width: 150px;
 	height: 30px;
 	margin-bottom: 30px;
 }
@@ -209,28 +205,68 @@ h4{
 	height: 800px;
 	border-radius: 20px;
 }
-.reg_container{
-	display:flex;
+
+.reg_container {
+	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	
 }
-.reg_content{
+
+.reg_content {
 	display: flex;
 	flex-direction: row;
 }
-.reg_img{
+
+.reg_img {
 	padding: 0px 60px 0px 0px;
 }
-.reg_info > table > tbody >  tr > td:nth-child(1){
+
+.reg_info>table>tbody>tr>td:nth-child(1) {
 	padding: 6px 10px;
-	
 }
-.regButton{
+
+.regButton {
 	margin: 0px 20px 0px 20px;
 }
-.cost{
-	font-size:20px;
+
+.cost {
+	font-size: 20px;
 	font-weight: bold;
+}
+
+.car_wrap {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #232F3E;
+	background: white;
+	width: 800px;
+	height: 1000px;
+	border-radius: 20px;
+}
+.menu_wrap{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+.btnSpace{
+	margin: 0px 40px;
+}
+.carTable{
+	width: 100%;
+	border-top: 1px solid #444444;
+    border-collapse: collapse;
+}
+.carTable td {
+	vertical-align: middle;
+	width:150px;
+	height: 50px;
+	border-bottom: 1px solid #444444;
+    padding: 10px;
+}
+.carHead{
+	padding: 60px 0px 0px 0px;
 }

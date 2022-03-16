@@ -9,7 +9,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>렌트카 리스트</title>
-	<link href="${path}/resources/css/car_related.css" rel="stylesheet" />
+	<link href="${path}/resources/css/memList.css" rel="stylesheet" />
 	<%
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -85,10 +85,13 @@
 		</nav>
 	</div>
 	<!-- ===========================================네비 메뉴 끝 =============================== -->
-<div class="recoProduct">	
-	<h3 class="recoText">렌트카 리스트</h3>
-	<div class="recoContain">
-	<table>
+	<section class="joinSection">
+			<div class="reserveCheckWrap">
+	<h3 class="recoText carlist">렌트카 리스트</h3>
+	<div class="carinsertButton">
+		<a href="register">차량 등록</a>
+	</div>
+	<table class="reserveList">
 		<tr>
 			<th>번호</th>
 			<th>모델명</th>
@@ -133,7 +136,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<a href="register">차량 등록</a>
-	
+</div>
+</section>
 </body>
 </html>
