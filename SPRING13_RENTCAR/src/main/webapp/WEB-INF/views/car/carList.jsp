@@ -10,6 +10,10 @@
 	<meta charset="UTF-8">
 	<title>렌트카 리스트</title>
 	<link href="${path}/resources/css/memList.css" rel="stylesheet" />
+	<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+	integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
+	crossorigin="anonymous" referrerpolicy="no-referrer" />
 	<%
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -85,7 +89,7 @@
 		</nav>
 	</div>
 	<!-- ===========================================네비 메뉴 끝 =============================== -->
-	
+
 	<section class="joinSection">
 			<div class="reserveCheckWrap">
 	<h3 class="recoText carlist">렌트카 리스트</h3>
