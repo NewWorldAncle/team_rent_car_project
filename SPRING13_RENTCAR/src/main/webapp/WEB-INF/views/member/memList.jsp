@@ -9,7 +9,9 @@
 <head>
 	<meta charset="UTF-8">
 	<title>회원출력</title>
-		<link href="${path}/resources/css/memList.css" rel="stylesheet" />
+	<link href="${path}/resources/css/memList.css" rel="stylesheet" />
+	<script src="https://kit.fontawesome.com/c895b3190c.js"
+	crossorigin="anonymous"></script>
 	<%
 		request.setCharacterEncoding("UTF-8");
 		response.setContentType("text/html; charset=UTF-8");
@@ -21,19 +23,7 @@
 	<div class="navi_container">
 		<nav class="navi">
 			<div class="navi_logo">
-			<%	// 로그인 X
-				if(session.getAttribute("login") == null) {
-			%>
 				<a href="/rentcar/">V-RENTCAR</a>
-			<% 
-				}
-				// 로그인 O
-				if(session.getAttribute("login") != null) {
-			%>
-				<a href="/rentcar/member/">V-RENTCAR</a>
-			<% 
-				}
-			%>
 			</div>
 			<ul class="naiv_menu">
 			<%
@@ -47,10 +37,10 @@
 			%>
 				<li><a href="/rentcar/admin/pageAnalyze">PageAnalyze</a></li>
 				<li><a href="/rentcar/car/carList">RentCarList</a></li>
-				<li><a href="memList">MemberList</a></li>
+				<li><a href="/rentcar/member/memList">MemberList</a></li>
 				<li><a href="/rentcar/reserve/allList">ReserveList</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
-				<li><a href="myList?id=${login.id}">MyPage</a></li>
+				<li><a href="/rentcar/member/myList?id=${login.id}">MyPage</a></li>
 				<li id="a"><i class="fas fa-user"></i>관리자</li>
 				<li><a href="logout">Logout</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
@@ -63,7 +53,7 @@
 				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
 				<li><a href="/rentcar/reserve/byMemList?memid=${login.id}">MyReserve</a><li>
-				<li><a href="myList?id=${login.id}">MyPage</a><li>
+				<li><a href="/rentcar/member/myList?id=${login.id}">MyPage</a><li>
 				<li id="a"><i class="fas fa-user"></i><%=mid %>님</li>
 				<li><a href="logout">Logout</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
