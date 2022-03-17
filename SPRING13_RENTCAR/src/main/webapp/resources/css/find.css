@@ -1,0 +1,88 @@
+@charset "UTF-8";
+
+@import "reset.css";
+
+.find_head {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	height: 40px;
+	background-color: black;
+}
+
+.find_head h3 {
+	color: white;
+	font-size: 20px;
+	font-weight: bold;
+	padding:10px;
+}
+
+input {
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	border-bottom: 1px solid rgb(182, 182, 182);
+}
+.menuPart{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+}
+.insertPart{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin: 40px 0px 15px 0px;
+}
+.vinsertPart{
+	display: flex;
+	flex-direction:column;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin: 20px 0px 15px 0px;
+}
+.findid{
+	font-size: 18px;
+	font-weight: bold;
+}
+/* .insertPart label{
+	margin: 40px 0px 0px 0px;
+}
+ */
+.menuPart input {
+	font-size: 14px;
+	width: 75px;
+	height: 30px;
+	border: none;
+	border-radius: 10px;
+	margin: 5px 10px 10px 10px;
+	color: white;
+}
+.ok_button {
+	background: black;
+}
+
+.ok_button:hover {
+	background: #2F2F2F;
+	box-shadow: 0px 0px 5px 3px #b3b3b3;
+}
+
+.no_button {
+	background: #AAAAAA;
+}
+
+.no_button:hover {
+	background: #DF5A4F;
+	box-shadow: 0px 0px 2px 3px #b3b3b3;
+}
+.intoBox{
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 0px 10px 0px;
+}
