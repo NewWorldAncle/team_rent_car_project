@@ -10,6 +10,8 @@
 <meta charset="UTF-8">
 <title>차량 등록</title>
 <link href="${path}/resources/css/login_related.css" rel="stylesheet" />
+<script src="https://kit.fontawesome.com/c895b3190c.js"
+	crossorigin="anonymous"></script>
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
 	integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
@@ -20,69 +22,54 @@
 	<div class="navi_container">
 		<nav class="navi">
 			<div class="navi_logo">
-				<%
-					// 로그인 X
-				if (session.getAttribute("login") == null) {
-				%>
 				<a href="/rentcar/">V-RENTCAR</a>
-				<%
-					}
-				// 로그인 O
-				if (session.getAttribute("login") != null) {
-				%>
-				<a href="/rentcar/member/">V-RENTCAR</a>
-				<%
-					}
-				%>
 			</div>
 			<ul class="naiv_menu">
-				<%
-					//===============================================================================
-				//						로	그	인	O	-	관	리	자
-				//===============================================================================
-				if (session.getAttribute("login") != null) {
-					String mid = (String) session.getAttribute("id"); //String mid생성
-
-					if (mid.equals("admin")) { //관리자(admin) 로그인
-				%>
+			<%
+			//===============================================================================
+			//						로	그	인	O	-	관	리	자
+			//===============================================================================
+				if(session.getAttribute("login") != null) {
+					String mid = (String)session.getAttribute("id"); //String mid생성
+				
+				if(mid.equals("admin"))	{	//관리자(admin) 로그인
+			%>
 				<li><a href="/rentcar/admin/pageAnalyze">PageAnalyze</a></li>
 				<li><a href="/rentcar/car/carList">RentCarList</a></li>
-				<li><a href="memList">MemberList</a></li>
+				<li><a href="/rentcar/member/memList">MemberList</a></li>
 				<li><a href="/rentcar/reserve/allList">ReserveList</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
-				<li><a href="myList?id=${login.id}">MyPage</a></li>
+				<li><a href="/rentcar/member/myList?id=${login.id}">MyPage</a></li>
 				<li id="a"><i class="fas fa-user"></i>관리자</li>
 				<li><a href="logout">Logout</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
-				<%
-					} else {
-				//===============================================================================
-				//							로	그	인	O	-	유	저
-				//===============================================================================
-				%>
+			<%
+				} else{
+			//===============================================================================
+			//							로	그	인	O	-	유	저
+			//===============================================================================
+			%>		
 				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
-				<li><a href="/rentcar/reserve/byMemList?memid=${login.id}">MyReserve</a>
-				<li>
-				<li><a href="myList?id=${login.id}">MyPage</a>
-				<li>
-				<li id="a"><i class="fas fa-user"></i><%=mid%>님</li>
+				<li><a href="/rentcar/reserve/byMemList?memid=${login.id}">MyReserve</a><li>
+				<li><a href="/rentcar/member/myList?id=${login.id}">MyPage</a><li>
+				<li id="a"><i class="fas fa-user"></i><%=mid %>님</li>
 				<li><a href="logout">Logout</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
-				<%
-					}
+			<%	
+				}
 				} else {
-				//===============================================================================
-				//								로	그	인	X
-				//===============================================================================
-				%>
+			//===============================================================================
+			//								로	그	인	X
+			//===============================================================================
+			%>		
 				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
 				<li><a href="/rentcar/member/loginForm">Login</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
-				<%
-					}
-				%>
+			<%
+				}
+			%>
 			</ul>
 		</nav>
 	</div>
