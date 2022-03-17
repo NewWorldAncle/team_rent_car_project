@@ -25,72 +25,74 @@ session = request.getSession();
 </head>
 
 <body>
-	<div class="navi_container">
+		<div class="navi_container">
 		<nav class="navi">
 			<div class="navi_logo">
-				<%
-					// 로그인 X
-				if (session.getAttribute("login") == null) {
-				%>
+			<%	// 로그인 X
+				if(session.getAttribute("login") == null) {
+			%>
 				<a href="/rentcar/">V-RENTCAR</a>
-				<%
-					}
+			<% 
+				}
 				// 로그인 O
-				if (session.getAttribute("login") != null) {
-				%>
+				if(session.getAttribute("login") != null) {
+			%>
 				<a href="/rentcar/member/">V-RENTCAR</a>
-				<%
-					}
-				%>
+			<% 
+				}
+			%>
 			</div>
 			<ul class="naiv_menu">
-				<%
-					//===============================================================================
-				//					로	그	인	된	상	태	-	관	리	자
-				//===============================================================================
-				if (session.getAttribute("login") != null) {
-					String mid = (String) session.getAttribute("id"); //String mid생성
-
-					if (mid.equals("admin")) { //관리자(admin) 로그인
-				%>
+			<%
+			//===============================================================================
+			//						로	그	인	O	-	관	리	자
+			//===============================================================================
+				if(session.getAttribute("login") != null) {
+					String mid = (String)session.getAttribute("id"); //String mid생성
+				
+				if(mid.equals("admin"))	{	//관리자(admin) 로그인
+			%>
 				<li><a href="/rentcar/admin/pageAnalyze">PageAnalyze</a></li>
 				<li><a href="/rentcar/car/carList">RentCarList</a></li>
-				<li><a href="memList">Member</a></li>
+				<li><a href="memList">MemberList</a></li>
+				<li><a href="/rentcar/reserve/allList">ReserveList</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
 				<li><a href="myList?id=${login.id}">MyPage</a></li>
-				<li id="a">관리자님 접속</li>
+				<li id="a"><i class="fas fa-user"></i>관리자</li>
 				<li><a href="logout">Logout</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
-				<%
-					} else {
-				//===============================================================================
-				//						로	그	인	된	상	태	-	유	저
-				//===============================================================================
-				%>
+			<%
+				} else{
+			//===============================================================================
+			//							로	그	인	O	-	유	저
+			//===============================================================================
+			%>		
 				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
-				<li><a href="myList?id=${login.id}">MyPage</a>
-				<li>
-				<li id="a"><%=mid%> 회원님 접속</li>
+				<li><a href="/rentcar/reserve/byMemList?memid=${login.id}">MyReserve</a><li>
+				<li><a href="myList?id=${login.id}">MyPage</a><li>
+				<li id="a"><i class="fas fa-user"></i><%=mid %>님</li>
 				<li><a href="logout">Logout</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
-				<%
-					}
+			<%	
+				}
 				} else {
-				//===============================================================================
-				//						로	그	인	안	된	상	태
-				//===============================================================================
-				%>
+			//===============================================================================
+			//								로	그	인	X
+			//===============================================================================
+			%>		
 				<li><a href="/rentcar/reserve/catalog">RentCar</a></li>
 				<li><a href="/rentcar/board/listPage">QnA</a></li>
-				<li><a href="member/loginForm">Login</a></li>
+				<li><a href="/rentcar/member/loginForm">Login</a></li>
 				<li><a href="#" class="navi__toggle"><i class="fas fa-bars"></i></a></li>
-				<%
-					}
-				%>
+			<%
+				}
+			%>
 			</ul>
 		</nav>
 	</div>
+	<!-- ===========================================네비 메뉴 끝 =============================== -->
+	
 	<section class="joinSection">
 		<div class="myListWrap" align="center">
 			<h3>내 정보 수정</h3>
@@ -191,14 +193,16 @@ session = request.getSession();
 						</select></td>
 					</tr>
 					<tr class="menu_wrap">
-						<td colspan="2" align="center"><input class="ok_button"
+						<td colspan="2" align="center">
+						</td>
+					</tr>
+				</table>
+					<div class="menu_wrap">
+						<input class="ok_button"
 							type="submit" value="수정">&nbsp;&nbsp;&nbsp;&nbsp; <!-- form name 붙이고 자바스크립트로 처리..? -->
 							<input class="no_button" type="button" value="탈퇴"
 							onclick="javascript:window.location='myDelete?id=${mypage.id}'" />
-						</td>
-					</tr>
-
-				</table>
+					</div>
 			</form>
 		</div>
 	</section>

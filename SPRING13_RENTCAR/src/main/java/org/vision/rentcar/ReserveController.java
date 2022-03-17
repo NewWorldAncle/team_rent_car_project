@@ -33,7 +33,7 @@ import org.vision.rentcar.serviceReserve.ServiceReserve;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping("/reserve/*")
+@RequestMapping({"/reserve/*","/member/*"})
 public class ReserveController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(ReserveController.class);

@@ -37,7 +37,7 @@ import org.vision.rentcar.serviceMember.batchService;
  * Handles requests for the application home page.
  */
 @Controller
-@RequestMapping({"/member/*","/admin/*","/car/*"})
+@RequestMapping({"/member/*","/admin/*","/car/*","/reserve/*","/board/**"})
 public class MemberController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(MemberController.class);
